@@ -1,6 +1,16 @@
-import { Star, Wifi, Utensils, Dumbbell, Waves, Users } from 'lucide-react';
+import { ArrowRight, Calendar, MapPin, Phone, Star, Users, Utensils, Waves, Wifi, Dumbbell } from 'lucide-react';
 
 export default function Home() {
+  const gallery = [
+    { src: '/images/exterior-night.png', alt: 'Hotel exterior at night' },
+    { src: '/images/rooftop-pool.png', alt: 'Rooftop pool view' },
+    { src: '/images/restaurant.png', alt: 'Restaurant dining area' },
+    { src: '/images/lobby.png', alt: 'Hotel lobby' },
+    { src: '/images/banquet.png', alt: 'Banquet hall setup' },
+    { src: '/images/chandelier.png', alt: 'Grand chandelier' },
+    { src: '/images/room-view.png', alt: 'Room view and balcony' },
+  ];
+
   const features = [
     {
       icon: Star,
@@ -53,80 +63,151 @@ export default function Home() {
   ];
 
   return (
-    <div>
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-20 right-20 w-72 h-72 bg-amber-400 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 left-20 w-72 h-72 bg-amber-600 rounded-full blur-3xl"></div>
+    <div className="bg-[#07060A]">
+      {/* Hero + Gallery */}
+      <section className="relative overflow-hidden">
+        {/* Ambient background */}
+        <div className="absolute inset-0">
+          <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-brand-gold/20 blur-3xl"></div>
+          <div className="absolute top-24 -right-20 h-80 w-80 rounded-full bg-brand-maroon/25 blur-3xl"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(1200px_circle_at_20%_20%,rgba(197,160,77,0.18),transparent_55%),radial-gradient(900px_circle_at_80%_15%,rgba(125,60,60,0.25),transparent_55%),linear-gradient(to_bottom,rgba(0,0,0,0.65),rgba(0,0,0,0.95))]"></div>
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="mb-8 animate-fade-in">
-            <img
-              src="/logo.png"
-              alt="Hotel Vaishnavi Heights Logo"
-              className="h-48 w-auto mx-auto mb-6 object-contain"
-            />
-          </div>
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            Welcome to<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">
-              Luxury & Elegance
-            </span>
-          </h1>
-          <p className="text-xl md:text-2xl text-slate-200 mb-8 max-w-2xl mx-auto">
-            Make Your Days Special With Us
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-gradient-to-r from-amber-600 to-amber-700 text-white px-8 py-4 rounded-lg font-bold text-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
-              Book Your Stay
-            </button>
-            <button className="border-2 border-amber-400 text-amber-400 px-8 py-4 rounded-lg font-bold text-lg hover:bg-amber-400 hover:text-slate-900 transition-all duration-300">
-              Explore Rooms
-            </button>
-          </div>
-        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-14 md:pt-20 md:pb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            {/* Left: Brand copy */}
+            <div className="lg:col-span-5">
+              <h1 className="mt-6 font-display text-5xl md:text-6xl lg:text-7xl leading-[0.95] text-white animate-fade-in-up">
+                A stay that feels
+                <span className="block text-transparent bg-clip-text bg-[linear-gradient(90deg,#F3E3B2,#C5A04D,#7D3C3C)]">
+                  quietly iconic.
+                </span>
+              </h1>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-amber-400 text-sm font-semibold">Scroll to explore</span>
-            <div className="w-6 h-10 border-2 border-amber-400 rounded-full flex items-start justify-center p-2">
-              <div className="w-1 h-2 bg-amber-400 rounded-full animate-pulse"></div>
+              <p className="mt-5 text-slate-200/90 text-lg md:text-xl max-w-xl animate-fade-in-up">
+                Spacious rooms, skyline views, refined dining, and celebration-ready banquets. Make your days special with us.
+              </p>
+
+              {/* Quick actions */}
+              <div className="mt-7 flex flex-col sm:flex-row gap-3 animate-fade-in-up">
+                <button className="group inline-flex items-center justify-center gap-2 rounded-xl bg-brand-gold px-6 py-3 text-slate-950 font-semibold hover:brightness-110 transition">
+                  <Calendar className="h-5 w-5" />
+                  Check availability
+                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
+                </button>
+                <button className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-white font-semibold hover:bg-white/10 transition">
+                  <Phone className="h-5 w-5 text-brand-gold" />
+                  Call for booking
+                </button>
+              </div>
+
+              {/* Micro info */}
+              <div className="mt-7 grid grid-cols-1 sm:grid-cols-3 gap-3 animate-fade-in-up">
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p className="text-xs uppercase tracking-wider text-white/60">Location</p>
+                  <p className="mt-1 text-white font-semibold inline-flex items-center gap-2">
+                    <MapPin className="h-4 w-4 text-brand-gold" />
+                    Prime city access
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p className="text-xs uppercase tracking-wider text-white/60">Signature</p>
+                  <p className="mt-1 text-white font-semibold">Rooftop pool</p>
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p className="text-xs uppercase tracking-wider text-white/60">Events</p>
+                  <p className="mt-1 text-white font-semibold inline-flex items-center gap-2">
+                    <Users className="h-4 w-4 text-brand-gold" />
+                    Banquets & weddings
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Photo mosaic */}
+            <div className="lg:col-span-7">
+              <div className="relative">
+                <div className="pointer-events-none absolute -inset-6 rounded-[28px] bg-[radial-gradient(800px_circle_at_30%_0%,rgba(197,160,77,0.18),transparent_45%)]"></div>
+
+                <div className="grid grid-cols-12 gap-3 md:gap-4">
+                  <div className="col-span-12 md:col-span-7 row-span-2 overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-2xl">
+                    <img
+                      src={gallery[0].src}
+                      alt={gallery[0].alt}
+                      className="h-64 md:h-[420px] w-full object-cover hover:scale-[1.03] transition-transform duration-700"
+                    />
+                  </div>
+
+                  <div className="col-span-6 md:col-span-5 overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-xl">
+                    <img
+                      src={gallery[1].src}
+                      alt={gallery[1].alt}
+                      className="h-40 md:h-[200px] w-full object-cover hover:scale-[1.04] transition-transform duration-700"
+                    />
+                  </div>
+
+                  <div className="col-span-6 md:col-span-5 overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-xl">
+                    <img
+                      src={gallery[3].src}
+                      alt={gallery[3].alt}
+                      className="h-40 md:h-[200px] w-full object-cover hover:scale-[1.04] transition-transform duration-700"
+                    />
+                  </div>
+
+                  <div className="col-span-12 grid grid-cols-3 gap-3 md:gap-4">
+                    {[gallery[2], gallery[4], gallery[6]].map((img) => (
+                      <div
+                        key={img.src}
+                        className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-lg"
+                      >
+                        <img
+                          src={img.src}
+                          alt={img.alt}
+                          className="h-28 md:h-[150px] w-full object-cover hover:scale-[1.06] transition-transform duration-700"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-5 flex items-center justify-between text-sm text-white/60">
+                  <p>Real photos from Hotel Vaishnavi Heights.</p>
+                  <p className="hidden sm:block">Scroll to explore more.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Quick Highlights */}
-      <section className="py-16 bg-gradient-to-b from-slate-50 to-white">
+      <section className="py-16 bg-gradient-to-b from-[#0B0A0F] to-[#0F0F15]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow border-l-4 border-amber-600">
-              <h3 className="text-2xl font-bold text-slate-900 mb-2">500+</h3>
-              <p className="text-slate-600">Rooms & Suites</p>
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-8 shadow-xl hover:bg-white/10 transition">
+              <h3 className="font-display text-3xl text-white mb-2">500+</h3>
+              <p className="text-white/70">Rooms & Suites</p>
             </div>
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow border-l-4 border-amber-600">
-              <h3 className="text-2xl font-bold text-slate-900 mb-2">25+</h3>
-              <p className="text-slate-600">Years of Excellence</p>
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-8 shadow-xl hover:bg-white/10 transition">
+              <h3 className="font-display text-3xl text-white mb-2">25+</h3>
+              <p className="text-white/70">Years of Excellence</p>
             </div>
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow border-l-4 border-amber-600">
-              <h3 className="text-2xl font-bold text-slate-900 mb-2">5000+</h3>
-              <p className="text-slate-600">Happy Guests</p>
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-8 shadow-xl hover:bg-white/10 transition">
+              <h3 className="font-display text-3xl text-white mb-2">5000+</h3>
+              <p className="text-white/70">Happy Guests</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Featured Amenities */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#0F0F15]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            <h2 className="font-display text-4xl md:text-5xl text-white mb-4">
               World-Class Amenities
             </h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
               Discover the perfect blend of comfort, luxury, and exceptional service
             </p>
           </div>
@@ -137,11 +218,11 @@ export default function Home() {
               return (
                 <div
                   key={index}
-                  className="group p-8 rounded-xl bg-gradient-to-br from-slate-50 to-slate-100 hover:from-amber-50 hover:to-amber-100 transition-all duration-300 border border-slate-200 hover:border-amber-300 hover:shadow-lg"
+                  className="group p-8 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 shadow-xl"
                 >
-                  <Icon className="w-12 h-12 text-amber-600 mb-4 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">{feature.title}</h3>
-                  <p className="text-slate-600 leading-relaxed">{feature.description}</p>
+                  <Icon className="w-12 h-12 text-brand-gold mb-4 group-hover:scale-110 transition-transform" />
+                  <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
+                  <p className="text-white/70 leading-relaxed">{feature.description}</p>
                 </div>
               );
             })}
