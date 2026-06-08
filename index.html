@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel Vaishnavi Heights - Luxury Hospitality</title>
+    <meta name="description" content="Experience luxury at Hotel Vaishnavi Heights. Premium rooms, world-class amenities, banquet facilities, and fine dining. Make your days special with us." />
+    <meta property="og:title" content="Hotel Vaishnavi Heights - Luxury Hospitality" />
+    <meta property="og:description" content="Discover luxury accommodations, fine dining, and premium event spaces." />
+    <meta property="og:image" content="/logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Hotel Vaishnavi Heights - Luxury Hospitality" />
+    <meta name="twitter:description" content="Discover luxury accommodations, fine dining, and premium event spaces." />
+    <meta name="twitter:image" content="/logo.png" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      (function () {
+        function removeBoltBadge() {
+          document.querySelectorAll('a[href*="bolt.new"], [class*="bolt-badge"], [id*="bolt-badge"]').forEach(function (el) {
+            el.remove();
+          });
+        }
+        removeBoltBadge();
+        new MutationObserver(removeBoltBadge).observe(document.documentElement, { childList: true, subtree: true });
+      })();
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
