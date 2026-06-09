@@ -14,6 +14,7 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
     { id: 'about', label: 'About Us' },
     { id: 'rooms', label: 'Rooms' },
     { id: 'banquets', label: 'Banquets' },
+    { id: 'restaurants', label: 'Restaurants' },
     { id: 'gallery', label: 'Gallery' },
     { id: 'contact', label: 'Contact' },
   ];

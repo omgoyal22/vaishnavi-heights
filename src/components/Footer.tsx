@@ -23,13 +23,25 @@ export default function Footer({ onNavigate }: FooterProps) {
           <div>
             <h3 className="text-lg font-semibold text-amber-400 mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              {['home', 'about', 'rooms', 'banquets', 'gallery', 'contact'].map((link) => (
+              {['home', 'about', 'rooms', 'banquets', 'restaurants', 'gallery', 'contact'].map((link) => (
                 <li key={link}>
                   <button
                     onClick={() => onNavigate(link)}
                     className="text-slate-300 hover:text-amber-400 transition-colors capitalize text-sm"
                   >
-                    {link === 'home' ? 'Home' : link === 'about' ? 'About Us' : link === 'rooms' ? 'Rooms' : link === 'banquets' ? 'Banquets' : link === 'gallery' ? 'Gallery' : 'Contact'}
+                    {link === 'home'
+                      ? 'Home'
+                      : link === 'about'
+                      ? 'About Us'
+                      : link === 'rooms'
+                      ? 'Rooms'
+                      : link === 'banquets'
+                      ? 'Banquets'
+                      : link === 'restaurants'
+                      ? 'Restaurants'
+                      : link === 'gallery'
+                      ? 'Gallery'
+                      : 'Contact'}
                   </button>
                 </li>
               ))}

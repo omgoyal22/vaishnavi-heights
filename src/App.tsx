@@ -5,10 +5,11 @@ import About from './pages/About';
 import Rooms from './pages/Rooms';
 import Banquets from './pages/Banquets';
 import Gallery from './pages/Gallery';
+import Restaurants from './pages/Restaurants';
 import Contact from './pages/Contact';
 import Footer from './components/Footer';
 
-type Page = 'home' | 'about' | 'rooms' | 'banquets' | 'gallery' | 'contact';
+type Page = 'home' | 'about' | 'rooms' | 'banquets' | 'gallery' | 'restaurants' | 'contact';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
@@ -23,6 +24,8 @@ export default function App() {
         return <Banquets />;
       case 'gallery':
         return <Gallery />;
+      case 'restaurants':
+        return <Restaurants />;
       case 'contact':
         return <Contact />;
       default:
