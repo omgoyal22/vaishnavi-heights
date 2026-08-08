@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navigation from './components/Navigation';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -7,12 +7,26 @@ import Banquets from './pages/Banquets';
 import Gallery from './pages/Gallery';
 import Restaurants from './pages/Restaurants';
 import Contact from './pages/Contact';
+import Admin from './pages/Admin';
 import Footer from './components/Footer';
 
 type Page = 'home' | 'about' | 'rooms' | 'banquets' | 'gallery' | 'restaurants' | 'contact';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
+  const [isAdminRoute, setIsAdminRoute] = useState(window.location.pathname === '/admin');
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setIsAdminRoute(window.location.pathname === '/admin');
+    };
+    window.addEventListener('popstate', handleLocationChange);
+    return () => window.removeEventListener('popstate', handleLocationChange);
+  }, []);
+
+  if (isAdminRoute) {
+    return <Admin />;
+  }
 
   const renderPage = () => {
     switch (currentPage) {
@@ -43,3 +57,4 @@ export default function App() {
     </div>
   );
 }
+

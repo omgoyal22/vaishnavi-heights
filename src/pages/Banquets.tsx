@@ -3,52 +3,28 @@ import { Users, Music, Utensils, Mic } from 'lucide-react';
 export default function Banquets() {
   const venues = [
     {
-      name: 'Grand Ballroom',
-      capacity: '500-800 Guests',
-      area: '5000 sq ft',
-      image: 'https://images.pexels.com/photos/1410235/pexels-photo-1410235.jpeg?auto=compress&cs=tinysrgb&w=600',
-      features: ['Crystal Chandeliers', 'Flexible Layout', 'Built-in AV System', 'Separate Entrance'],
-      description: 'Majestic venue perfect for grand celebrations, product launches, and large conferences',
+      name: 'Jashn Hall',
+      capacity: '300 Pax',
+      area: '3300 Sq.Ft',
+      image: '/rooms_image/IMG_6048.jpeg',
+      features: ['Grand Setup', 'Elegant Decor', 'Catering Available', 'AV System'],
+      description: 'Spacious banquet hall perfect for weddings, grand parties, and large scale celebrations.',
     },
     {
-      name: 'Crystal Lounge',
-      capacity: '200-350 Guests',
-      area: '2500 sq ft',
-      image: 'https://images.pexels.com/photos/1226398/pexels-photo-1226398.jpeg?auto=compress&cs=tinysrgb&w=600',
-      features: ['Elegant Decor', 'Natural Light', 'Private Bar', 'Dance Floor'],
-      description: 'Sophisticated space ideal for cocktail receptions, weddings, and gala dinners',
+      name: 'Royal Darbar',
+      capacity: '150-200 Pax',
+      area: '2300 Sq.Ft',
+      image: '/rooms_image/IMG_6050.jpeg',
+      features: ['Royal Ambience', 'Flexible Layout', 'Dedicated Entry', 'Custom Lighting'],
+      description: 'Elegant venue ideal for mid-sized events, receptions, and family gatherings.',
     },
     {
-      name: 'Business Center',
-      capacity: '50-150 Guests',
-      area: '1500 sq ft',
-      image: 'https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=600',
-      features: ['Modern Tech', 'WiFi Setup', 'Breakout Rooms', 'Coffee Bar'],
-      description: 'Professional environment for seminars, workshops, and corporate meetings',
-    },
-    {
-      name: 'Emerald Hall',
-      capacity: '100-250 Guests',
-      area: '2000 sq ft',
-      image: 'https://images.pexels.com/photos/1854076/pexels-photo-1854076.jpeg?auto=compress&cs=tinysrgb&w=600',
-      features: ['Green Aesthetics', 'Flexible Setup', 'Outdoor Access', 'Lounge Area'],
-      description: 'Versatile hall perfect for intimate gatherings and special events',
-    },
-    {
-      name: 'Platinum Pavilion',
-      capacity: '300-500 Guests',
-      area: '3500 sq ft',
-      image: 'https://images.pexels.com/photos/1226398/pexels-photo-1226398.jpeg?auto=compress&cs=tinysrgb&w=600',
-      features: ['Premium Setup', 'Multiple Rooms', 'Catering Kitchen', 'VIP Lounge'],
-      description: 'Premium venue for weddings, formal dinners, and prestigious events',
-    },
-    {
-      name: 'Garden Terrace',
-      capacity: '150-300 Guests',
-      area: '2000 sq ft',
-      image: 'https://images.pexels.com/photos/1410235/pexels-photo-1410235.jpeg?auto=compress&cs=tinysrgb&w=600',
-      features: ['Open Air', 'Scenic Views', 'Weather Protection', 'Outdoor Kitchen'],
-      description: 'Beautiful outdoor space perfect for garden parties and daytime events',
+      name: 'Business Conference Hall',
+      capacity: '50 Pax',
+      area: '750 Sq.Ft',
+      image: '/rooms_image/IMG_6052.jpeg',
+      features: ['Corporate Setup', 'Projector Ready', 'High-Speed WiFi', 'Coffee Break Area'],
+      description: 'Professional space designed for corporate meetings, conferences, and intimate workshops.',
     },
   ];
 
@@ -135,9 +111,9 @@ export default function Banquets() {
                   </div>
 
                   {/* CTA */}
-                  <button className="w-full bg-gradient-to-r from-amber-600 to-amber-700 text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105">
+                  <a href={`https://wa.me/918581888883?text=Hello,%20I%20would%20like%20to%20inquire%20about%20the%20${encodeURIComponent(venue.name)}`} target="_blank" rel="noopener noreferrer" className="block text-center w-full bg-gradient-to-r from-amber-600 to-amber-700 text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105">
                     Inquire Now
-                  </button>
+                  </a>
                 </div>
               </div>
             ))}
@@ -202,7 +178,7 @@ export default function Banquets() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <img
-                src="https://images.pexels.com/photos/1624487/pexels-photo-1624487.jpeg?auto=compress&cs=tinysrgb&w=600"
+                src="/rooms_image/IMG_6047.jpeg"
                 alt="Catering"
                 className="rounded-xl shadow-xl"
               />

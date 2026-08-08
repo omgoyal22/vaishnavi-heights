@@ -38,7 +38,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                       : link === 'banquets'
                       ? 'Banquets'
                       : link === 'restaurants'
-                      ? 'Restaurants'
+                      ? 'Dining'
                       : link === 'gallery'
                       ? 'Gallery'
                       : 'Contact'}
@@ -58,7 +58,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               </div>
               <div className="flex items-center gap-2">
                 <Phone size={18} className="text-amber-400" />
-                <p className="text-slate-300 text-sm">+1 (555) 123-4567</p>
+                <p className="text-slate-300 text-sm">+91 85818 88881</p>
               </div>
               <div className="flex items-center gap-2">
                 <Mail size={18} className="text-amber-400" />

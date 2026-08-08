@@ -1,46 +1,76 @@
-import { ArrowRight, Calendar, MapPin, Phone, Star, Users, Utensils, Waves, Wifi, Dumbbell } from 'lucide-react';
+import { ArrowRight, Calendar, MapPin, Phone, Star, Users, Utensils, Waves, Wifi, Dumbbell, ShoppingBag, Bed, PartyPopper, Car, Bell, ShieldCheck, Zap, ArrowUpDown } from 'lucide-react';
 
 export default function Home() {
   const gallery = [
-    { src: '/images/exterior-night.png', alt: 'Hotel exterior at night' },
-    { src: '/images/rooftop-pool.png', alt: 'Rooftop pool view' },
-    { src: '/images/restaurant.png', alt: 'Restaurant dining area' },
-    { src: '/images/lobby.png', alt: 'Hotel lobby' },
-    { src: '/images/banquet.png', alt: 'Banquet hall setup' },
-    { src: '/images/chandelier.png', alt: 'Grand chandelier' },
-    { src: '/images/room-view.png', alt: 'Room view and balcony' },
+    { src: '/rooms_image/IMG_6045.jpeg', alt: 'Hotel exterior at night' },
+    { src: '/rooms_image/IMG_6046.jpeg', alt: 'Rooftop pool view' },
+    { src: '/rooms_image/IMG_6047.jpeg', alt: 'Restaurant dining area' },
+    { src: '/rooms_image/IMG_6048.jpeg', alt: 'Hotel lobby' },
+    { src: '/rooms_image/IMG_6049.jpeg', alt: 'Banquet hall setup' },
+    { src: '/rooms_image/IMG_6050.jpeg', alt: 'Grand chandelier' },
+    { src: '/rooms_image/IMG_6051.jpeg', alt: 'Room view and balcony' },
   ];
 
   const features = [
     {
-      icon: Star,
-      title: 'Luxury Rooms',
-      description: 'Elegantly designed suites with premium bedding and modern amenities',
+      icon: MapPin,
+      title: 'Prime Location on NH-19',
+      description: 'Situated in Manjurahi, with easy connectivity.',
+    },
+    {
+      icon: ShoppingBag,
+      title: 'Only 3 km from Market',
+      description: 'Close to shopping and business areas in Aurangabad.',
+    },
+    {
+      icon: Bed,
+      title: 'Comfortable Rooms',
+      description: 'Multiple room categories to suit different guest needs.',
+    },
+    {
+      icon: PartyPopper,
+      title: 'Spacious Banquet Halls',
+      description: 'Ideal for weddings, parties, and events.',
     },
     {
       icon: Utensils,
-      title: 'Fine Dining',
-      description: 'World-class cuisine prepared by expert chefs in our signature restaurant',
+      title: 'Multi-Cuisine Restaurant',
+      description: 'Serves Indian, Chinese, and Continental cuisine.',
     },
     {
       icon: Waves,
-      title: 'Spa & Wellness',
-      description: 'Rejuvenate at our full-service spa with therapeutic treatments',
+      title: 'Swimming Pool',
+      description: 'Available for in-house guests and private events.',
     },
     {
-      icon: Dumbbell,
-      title: 'Fitness Center',
-      description: 'State-of-the-art gym facilities with personal training available',
+      icon: Car,
+      title: 'Free Parking',
+      description: 'Convenient parking facility for guests.',
     },
     {
-      icon: Wifi,
-      title: 'High-Speed WiFi',
-      description: 'Seamless connectivity throughout the hotel premises',
+      icon: Bell,
+      title: '24×7 Front Desk',
+      description: 'Professional assistance for guests.',
+    },
+    {
+      icon: ShieldCheck,
+      title: 'CCTV Security',
+      description: 'Added security for guests and property.',
+    },
+    {
+      icon: Zap,
+      title: 'Power Backup',
+      description: 'Ensures uninterrupted hotel services.',
+    },
+    {
+      icon: ArrowUpDown,
+      title: 'Lift Facility',
+      description: 'Convenient access to different floors.',
     },
     {
       icon: Users,
-      title: 'Event Spaces',
-      description: 'Versatile banquet halls perfect for weddings and conferences',
+      title: 'Professional Hospitality',
+      description: 'Comfortable stay with attentive service.',
     },
   ];
 
@@ -90,15 +120,23 @@ export default function Home() {
 
               {/* Quick actions */}
               <div className="mt-7 flex flex-col sm:flex-row gap-3 animate-fade-in-up">
-                <button className="group inline-flex items-center justify-center gap-2 rounded-xl bg-brand-gold px-6 py-3 text-slate-950 font-semibold hover:brightness-110 transition">
+                <a
+                  href="https://api.whatsapp.com/send/?phone=918581888883&text=Hello%2C+I+would+like+to+book+the+Standard+Room&type=phone_number&app_absent=0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center justify-center gap-2 rounded-xl bg-brand-gold px-6 py-3 text-slate-950 font-semibold hover:brightness-110 transition"
+                >
                   <Calendar className="h-5 w-5" />
                   Check availability
                   <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
-                </button>
-                <button className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-white font-semibold hover:bg-white/10 transition">
+                </a>
+                <a
+                  href="tel:+918581888883"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-white font-semibold hover:bg-white/10 transition"
+                >
                   <Phone className="h-5 w-5 text-brand-gold" />
                   Call for booking
-                </button>
+                </a>
               </div>
 
               {/* Micro info */}
@@ -205,10 +243,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-display text-4xl md:text-5xl text-white mb-4">
-              World-Class Amenities
+              Why Choose Us
             </h2>
             <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
-              Discover the perfect blend of comfort, luxury, and exceptional service
+              The perfect blend of comfort, luxury, and exceptional service for every guest
             </p>
           </div>
 
@@ -333,9 +371,14 @@ export default function Home() {
             Contact us today to book your perfect getaway or event
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-gradient-to-r from-amber-600 to-amber-700 text-white px-8 py-4 rounded-lg font-bold text-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+            <a
+              href="https://api.whatsapp.com/send/?phone=918581888883&text=Hello%2C+I+would+like+to+book+the+Standard+Room&type=phone_number&app_absent=0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gradient-to-r from-amber-600 to-amber-700 text-white px-8 py-4 rounded-lg font-bold text-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 inline-flex items-center justify-center"
+            >
               Book Now
-            </button>
+            </a>
             <button className="border-2 border-amber-400 text-amber-400 px-8 py-4 rounded-lg font-bold text-lg hover:bg-amber-400 hover:text-slate-900 transition-all duration-300">
               Learn More
             </button>

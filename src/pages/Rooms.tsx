@@ -6,70 +6,81 @@ export default function Rooms() {
 
   const rooms = [
     {
-      name: 'Standard Room',
-      price: '₹3,500',
+      name: 'Superior Room',
+      price: 'Best Rate',
       capacity: '2 Guests',
-      area: '350 sq ft',
-      image: 'https://images.pexels.com/photos/1438761/pexels-photo-1438761.jpeg?auto=compress&cs=tinysrgb&w=600',
-      amenities: ['King Bed', 'AC', 'WiFi', 'Shower', 'Smart TV', 'Work Desk'],
-      description: 'Perfect for business travelers seeking comfort and convenience.',
+      area: '143 sq ft',
+      image: '/rooms_image/IMG_6059.jpeg',
+      amenities: ['Double Bed', 'AC', 'Free Wi-Fi', 'Tea/Coffee Maker', 'Room Service'],
+      description: 'Comfortable stay with essential amenities, AC, LED TV, and daily housekeeping. (No Study Table/Smart TV)',
       rating: 4.5,
-      badge: 'Popular',
+      badge: 'Economy',
     },
     {
       name: 'Deluxe Room',
-      price: '₹5,000',
-      capacity: '2-3 Guests',
-      area: '500 sq ft',
-      image: 'https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=600',
-      amenities: ['King Bed', 'Sofa', 'AC', 'WiFi', 'TV', 'Marble Bathroom'],
-      description: 'Elevated elegance with spacious layouts and premium furnishings.',
-      rating: 4.7,
-      badge: 'Best Value',
+      price: 'Best Rate',
+      capacity: '2 Guests',
+      area: '168 sq ft',
+      image: '/rooms_image/IMG_6060.jpeg',
+      amenities: ['Double Bed', 'AC', 'Smart TV', 'Study Table', 'Free Wi-Fi'],
+      description: 'Upgraded comfort with a Smart TV, dedicated study table, and premium room service.',
+      rating: 4.6,
+      badge: 'Popular',
     },
     {
-      name: 'Suite',
-      price: '₹8,000',
+      name: 'Club Room',
+      price: 'Best Rate',
+      capacity: '2 Guests',
+      area: '168 sq ft',
+      image: '/rooms_image/IMG_6061.jpeg',
+      amenities: ['Queen Bed', 'Smart TV', 'Study Table', 'Premium Interiors', 'Wi-Fi'],
+      description: 'Premium interiors with a Queen Size Bed, Smart TV, and a dedicated study table.',
+      rating: 4.7,
+      badge: 'Premium',
+    },
+    {
+      name: 'Executive Room',
+      price: 'Best Rate',
+      capacity: '2-3 Guests',
+      area: '198 sq ft',
+      image: '/rooms_image/IMG_6062.jpeg',
+      amenities: ['King Bed', 'Smart TV', 'Study Table', 'Sofa Seating', 'Premium Amenities'],
+      description: 'Spacious room featuring a King Size Bed, comfortable sofa seating, and premium amenities.',
+      rating: 4.8,
+      badge: 'Business',
+    },
+    {
+      name: 'Business Suite',
+      price: 'Best Rate',
       capacity: '2-4 Guests',
-      area: '800 sq ft',
-      image: 'https://images.pexels.com/photos/1579824/pexels-photo-1579824.jpeg?auto=compress&cs=tinysrgb&w=600',
-      amenities: ['King Bed', 'Living Room', 'Kitchenette', 'Spa Tub', 'WiFi', 'Lounge'],
-      description: 'Luxury living with separate spaces perfect for families.',
+      area: '311 sq ft',
+      image: '/rooms_image/IMG_6063.jpeg',
+      amenities: ['King Bed', 'Living Area', 'Work Desk', 'Smart TV', 'Premium Bathroom'],
+      description: 'Ideal for business guests, featuring a separate living area, work desk, and a premium bathroom.',
       rating: 4.9,
+      badge: 'Executive',
+    },
+    {
+      name: 'Luxury Suite',
+      price: 'Best Rate',
+      capacity: '2-4 Guests',
+      area: '486 sq ft',
+      image: '/rooms_image/IMG_6064.jpeg',
+      amenities: ['King Bed', 'Luxury Interiors', 'Separate Living Area', 'Smart TV', 'Premium Amenities'],
+      description: 'Experience true luxury with expansive interiors, a separate living area, and premium amenities.',
+      rating: 5.0,
       badge: 'Luxury',
     },
     {
       name: 'Presidential Suite',
-      price: '₹12,000',
-      capacity: '2-6 Guests',
-      area: '1200 sq ft',
-      image: 'https://images.pexels.com/photos/2635038/pexels-photo-2635038.jpeg?auto=compress&cs=tinysrgb&w=600',
-      amenities: ['Multiple Bedrooms', 'Lounge', 'Full Kitchen', 'Jacuzzi', 'Concierge', 'Private Terrace'],
-      description: 'Ultimate luxury with exclusive amenities and personalized service.',
+      price: 'Best Rate',
+      capacity: '2-4 Guests',
+      area: '455 sq ft',
+      image: '/rooms_image/IMG_6065.jpeg',
+      amenities: ['King Bed', 'Luxury Living Space', 'Smart TV', 'Finest Suite', 'Premium Hospitality'],
+      description: 'Our finest suite offering exceptional luxury living space and world-class premium hospitality.',
       rating: 5.0,
       badge: 'Elite',
-    },
-    {
-      name: 'Business Room',
-      price: '₹4,500',
-      capacity: '1-2 Guests',
-      area: '400 sq ft',
-      image: 'https://images.pexels.com/photos/1438761/pexels-photo-1438761.jpeg?auto=compress&cs=tinysrgb&w=600',
-      amenities: ['Queen Bed', 'Work Desk', 'High-Speed WiFi', 'Conference Phone', 'Printer'],
-      description: 'Perfectly designed for business professionals.',
-      rating: 4.6,
-      badge: 'Corporate',
-    },
-    {
-      name: 'Family Villa',
-      price: '₹10,000',
-      capacity: '4-6 Guests',
-      area: '1000 sq ft',
-      image: 'https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=600',
-      amenities: ['Multiple Rooms', 'Lounge', 'Kitchenette', 'Games', 'WiFi', 'Family Bath'],
-      description: 'Ideal for families with multiple bedrooms and entertainment.',
-      rating: 4.8,
-      badge: 'Family Choice',
     },
   ];
 
@@ -106,22 +117,17 @@ export default function Rooms() {
               <p className="text-lg text-slate-200 max-w-xl leading-relaxed">
                 Experience world-class comfort in our thoughtfully designed rooms and suites, each offering a unique blend of elegance and modern convenience.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <button className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 px-8 py-3 text-white font-semibold hover:shadow-lg hover:shadow-amber-500/50 transition-all duration-300">
-                  Explore Rooms
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
-                <button className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/5 px-8 py-3 text-white font-semibold hover:bg-white/10 transition-all">
-                  <Heart className="w-4 h-4" />
-                  Wishlist
-                </button>
+              <div className="pt-4">
+                <p className="text-base text-slate-200 max-w-xl leading-relaxed">
+                  Discover the perfect stay tailored to your comfort, style, and travel needs.
+                </p>
               </div>
             </div>
 
             {/* Large Featured Image */}
             <div className="relative h-96 md:h-full rounded-3xl overflow-hidden shadow-2xl group">
               <img
-                src="https://images.pexels.com/photos/1579824/pexels-photo-1579824.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src="/rooms_image/IMG_6065.jpeg"
                 alt="Luxury room"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
@@ -138,7 +144,7 @@ export default function Rooms() {
       </section>
 
       {/* Exclusive Offers Section */}
-      <section className="relative py-24 overflow-hidden">
+      <section className="relative py-10 overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent"></div>
@@ -147,86 +153,83 @@ export default function Rooms() {
           <div className="absolute bottom-0 -left-32 h-72 w-72 rounded-full bg-amber-600/15 blur-3xl"></div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8 items-stretch">
-            {/* Left: Offers - Premium Gradient Card */}
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="grid md:grid-cols-2 gap-5 items-stretch">
+            {/* Left: Offers - Compact Gradient Card */}
             <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-500 via-amber-600 to-amber-700 rounded-[32px] shadow-2xl opacity-95 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(255,255,255,0.1),transparent_50%)] rounded-[32px]"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-500 via-amber-600 to-amber-700 rounded-2xl shadow-xl opacity-95 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(255,255,255,0.1),transparent_50%)] rounded-2xl"></div>
               
-              <div className="relative p-10 md:p-14 text-white rounded-[32px] h-full flex flex-col justify-between">
+              <div className="relative p-5 text-white rounded-2xl h-full flex flex-col justify-between">
                 <div>
-                  <div className="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-2 mb-6 border border-white/30">
-                    <Sparkles className="w-4 h-4 text-amber-200" />
-                    <span className="text-sm font-semibold">Limited Time Deals</span>
+                  <div className="inline-flex items-center gap-1.5 bg-white/20 rounded-full px-2.5 py-1 mb-2.5 border border-white/30">
+                    <Sparkles className="w-3 h-3 text-amber-200" />
+                    <span className="text-[10px] font-semibold tracking-wide uppercase">Limited Time</span>
                   </div>
                   
-                  <h2 className="text-5xl md:text-6xl font-black mb-2 leading-tight">Exclusive<br />Offers</h2>
-                  <p className="text-amber-100 mb-10 text-lg font-light">Premium benefits for our valued guests</p>
+                  <h2 className="text-xl md:text-2xl font-black mb-0.5 leading-tight">Exclusive Offers</h2>
+                  <p className="text-amber-100 mb-4 text-xs font-light">Premium guest benefits</p>
 
-                  <div className="space-y-5">
+                  <div className="space-y-2">
                     {offers.map((offer, i) => (
                       <div
                         key={i}
-                        className="flex items-start gap-4 p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 group/item cursor-pointer"
+                        className="flex items-center gap-2.5 p-2 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 group/item cursor-pointer"
                       >
-                        <div className="text-4xl flex-shrink-0 bg-white/20 w-14 h-14 rounded-xl flex items-center justify-center group-hover/item:scale-110 transition-transform duration-300">
+                        <div className="text-lg flex-shrink-0 bg-white/20 w-8 h-8 rounded-lg flex items-center justify-center group-hover/item:scale-110 transition-transform duration-300">
                           {offer.icon}
                         </div>
-                        <div className="flex-1 pt-1">
-                          <p className="font-bold text-lg group-hover/item:translate-x-2 transition-transform duration-300">{offer.title}</p>
-                          <p className="text-amber-100 text-sm mt-1">{offer.subtitle}</p>
+                        <div className="flex-1 min-w-0">
+                          <p className="font-bold text-xs truncate group-hover/item:translate-x-0.5 transition-transform duration-300">{offer.title}</p>
+                          <p className="text-amber-100 text-[10px] mt-0.5">{offer.subtitle}</p>
                         </div>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <button className="mt-10 w-full bg-white text-amber-700 rounded-full py-4 font-black text-lg hover:bg-amber-50 transition-all duration-300 hover:shadow-2xl hover:shadow-amber-400/50 transform hover:scale-105">
+                <button className="mt-4 w-full bg-white text-amber-700 rounded-xl py-2 font-black text-xs hover:bg-amber-50 transition-all duration-300 shadow-md transform hover:scale-[1.02]">
                   Claim Your Offer
                 </button>
               </div>
             </div>
 
-            {/* Right: Booking Info - Elegant White Card */}
+            {/* Right: Booking Info - Compact White Card */}
             <div className="relative group">
-              <div className="absolute inset-0 bg-white rounded-[32px] shadow-2xl group-hover:shadow-3xl transition-shadow duration-300"></div>
-              <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-slate-50 rounded-[32px]"></div>
+              <div className="absolute inset-0 bg-white rounded-2xl shadow-xl group-hover:shadow-2xl transition-shadow duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-slate-50 rounded-2xl"></div>
               
-              <div className="relative p-10 md:p-14 rounded-[32px] h-full flex flex-col justify-between">
+              <div className="relative p-5 rounded-2xl h-full flex flex-col justify-between">
                 <div>
-                  <div className="inline-flex items-center gap-2 bg-amber-50 rounded-full px-4 py-2 mb-6 border border-amber-200">
-                    <Heart className="w-4 h-4 text-amber-600" />
-                    <span className="text-sm font-semibold text-amber-700">Easy Booking</span>
+                  <div className="inline-flex items-center gap-1.5 bg-amber-50 rounded-full px-2.5 py-1 mb-2.5 border border-amber-200">
+                    <Heart className="w-3 h-3 text-amber-600" />
+                    <span className="text-[10px] font-semibold text-amber-700 uppercase tracking-wide">Easy Booking</span>
                   </div>
 
-                  <h3 className="text-5xl md:text-6xl font-black text-slate-900 mb-10 leading-tight">Book with<br /><span className="bg-gradient-to-r from-amber-600 to-amber-500 bg-clip-text text-transparent">Confidence</span></h3>
+                  <h3 className="text-xl md:text-2xl font-black text-slate-900 mb-4 leading-tight">Book with <span className="bg-gradient-to-r from-amber-600 to-amber-500 bg-clip-text text-transparent">Confidence</span></h3>
 
-                  <div className="space-y-6">
+                  <div className="space-y-3">
                     {[
-                      { num: '1', title: 'Select your perfect room', desc: 'Browse our curated collection of luxury accommodations' },
-                      { num: '2', title: 'Choose your check-in date', desc: 'Flexible calendar with real-time availability' },
-                      { num: '3', title: 'Enjoy your stay', desc: 'World-class service awaits you' },
+                      { num: '1', title: 'Select your room', desc: 'Curated luxury accommodations' },
+                      { num: '2', title: 'Choose check-in date', desc: 'Real-time calendar availability' },
+                      { num: '3', title: 'Enjoy your stay', desc: 'World-class hospitality awaits' },
                     ].map((step, i) => (
-                      <div key={i} className="flex gap-5 items-start group/step">
-                        <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 text-white font-black text-2xl flex items-center justify-center shadow-lg group-hover/step:scale-110 transition-transform duration-300 group-hover/step:shadow-xl group-hover/step:shadow-amber-400/50">
+                      <div key={i} className="flex gap-2.5 items-center group/step">
+                        <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 text-white font-black text-xs flex items-center justify-center shadow group-hover/step:scale-110 transition-transform duration-300">
                           {step.num}
                         </div>
-                        <div className="flex-1 pt-2">
-                          <p className="font-bold text-slate-900 text-lg group-hover/step:text-amber-600 transition-colors">{step.title}</p>
-                          <p className="text-slate-600 mt-1 leading-relaxed">{step.desc}</p>
+                        <div className="flex-1 min-w-0">
+                          <p className="font-bold text-slate-900 text-xs truncate group-hover/step:text-amber-600 transition-colors">{step.title}</p>
+                          <p className="text-slate-500 text-[10px] truncate mt-0.5">{step.desc}</p>
                         </div>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <button className="mt-10 w-full bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 text-white rounded-full py-4 font-black text-lg hover:shadow-2xl hover:shadow-amber-500/50 transition-all duration-300 transform hover:scale-105 relative overflow-hidden group/btn">
-                  <span className="relative z-10 flex items-center justify-center gap-2">
-                    Start Your Booking
-                    <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-amber-700 to-amber-600 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                <button className="mt-4 w-full bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 text-white rounded-xl py-2 font-black text-xs hover:shadow-lg hover:shadow-amber-500/30 transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-1.5">
+                  Start Your Booking
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
             </div>
@@ -336,9 +339,9 @@ export default function Rooms() {
                   </div>
 
                   {/* CTA */}
-                  <button className="w-full bg-gradient-to-r from-amber-500 to-amber-600 text-white py-3 rounded-full font-bold hover:shadow-lg hover:shadow-amber-500/50 transition-all duration-300 group-hover:scale-105 transform">
-                    View & Book Now
-                  </button>
+                  <a href={`https://wa.me/918581888883?text=Hello,%20I%20would%20like%20to%20book%20the%20${encodeURIComponent(room.name)}`} target="_blank" rel="noopener noreferrer" className="block text-center w-full bg-gradient-to-r from-amber-500 to-amber-600 text-white py-3 rounded-full font-bold hover:shadow-lg hover:shadow-amber-500/50 transition-all duration-300 group-hover:scale-105 transform">
+                    Book Now
+                  </a>
                 </div>
               </div>
             ))}
@@ -354,10 +357,10 @@ export default function Rooms() {
           <p className="text-xl text-slate-200 mb-10 max-w-2xl mx-auto">
             Choose from our exceptional collection of rooms and experience hospitality like never before.
           </p>
-          <button className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-amber-500 to-amber-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:shadow-amber-500/50 transition-all duration-300 hover:scale-105">
+          <a href="https://wa.me/918581888883?text=Hello,%20I%20would%20like%20to%20reserve%20a%20room" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-amber-500 to-amber-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:shadow-amber-500/50 transition-all duration-300 hover:scale-105">
             Reserve Your Room Now
             <ArrowRight className="w-5 h-5" />
-          </button>
+          </a>
         </div>
       </section>
     </div>

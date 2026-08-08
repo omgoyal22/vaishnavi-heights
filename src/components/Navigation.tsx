@@ -14,7 +14,7 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
     { id: 'about', label: 'About Us' },
     { id: 'rooms', label: 'Rooms' },
     { id: 'banquets', label: 'Banquets' },
-    { id: 'restaurants', label: 'Restaurants' },
+    { id: 'restaurants', label: 'Dining' },
     { id: 'gallery', label: 'Gallery' },
     { id: 'contact', label: 'Contact' },
   ];
@@ -56,9 +56,9 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
 
           {/* Book Now Button */}
           <div className="hidden md:block">
-            <button className="bg-gradient-to-r from-amber-600 to-amber-700 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105">
+            <a href="https://wa.me/918581888883?text=Hello,%20I%20would%20like%20to%20make%20a%20booking" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-amber-600 to-amber-700 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 inline-block">
               Book Now
-            </button>
+            </a>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -86,9 +86,9 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                 {link.label}
               </button>
             ))}
-            <button className="w-full m-4 mt-2 bg-gradient-to-r from-amber-600 to-amber-700 text-white px-6 py-2 rounded-lg font-semibold">
+            <a href="https://wa.me/918581888883?text=Hello,%20I%20would%20like%20to%20make%20a%20booking" target="_blank" rel="noopener noreferrer" className="block w-[calc(100%-2rem)] text-center m-4 mt-2 bg-gradient-to-r from-amber-600 to-amber-700 text-white px-6 py-2 rounded-lg font-semibold">
               Book Now
-            </button>
+            </a>
           </div>
         )}
       </div>

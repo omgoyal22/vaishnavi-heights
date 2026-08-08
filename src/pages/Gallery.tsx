@@ -1,71 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
+import { getGalleryImages, GalleryItem } from '../utils/galleryStore';
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [galleryImages, setGalleryImages] = useState<GalleryItem[]>([]);
 
-  const galleryImages = [
-    {
-      title: 'Grand Lobby',
-      category: 'Hotel',
-      image: 'https://images.pexels.com/photos/1579824/pexels-photo-1579824.jpeg?auto=compress&cs=tinysrgb&w=600',
-    },
-    {
-      title: 'Luxury Suite',
-      category: 'Rooms',
-      image: 'https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=600',
-    },
-    {
-      title: 'Fine Dining',
-      category: 'Dining',
-      image: 'https://images.pexels.com/photos/1624487/pexels-photo-1624487.jpeg?auto=compress&cs=tinysrgb&w=600',
-    },
-    {
-      title: 'Grand Ballroom',
-      category: 'Banquets',
-      image: 'https://images.pexels.com/photos/1410235/pexels-photo-1410235.jpeg?auto=compress&cs=tinysrgb&w=600',
-    },
-    {
-      title: 'Premium Room',
-      category: 'Rooms',
-      image: 'https://images.pexels.com/photos/1438761/pexels-photo-1438761.jpeg?auto=compress&cs=tinysrgb&w=600',
-    },
-    {
-      title: 'Elegant Setup',
-      category: 'Banquets',
-      image: 'https://images.pexels.com/photos/1226398/pexels-photo-1226398.jpeg?auto=compress&cs=tinysrgb&w=600',
-    },
-    {
-      title: 'Relaxation Zone',
-      category: 'Amenities',
-      image: 'https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=600',
-    },
-    {
-      title: 'Meeting Hall',
-      category: 'Banquets',
-      image: 'https://images.pexels.com/photos/1854076/pexels-photo-1854076.jpeg?auto=compress&cs=tinysrgb&w=600',
-    },
-    {
-      title: 'Outdoor Terrace',
-      category: 'Hotel',
-      image: 'https://images.pexels.com/photos/1579824/pexels-photo-1579824.jpeg?auto=compress&cs=tinysrgb&w=600',
-    },
-    {
-      title: 'Wedding Hall',
-      category: 'Banquets',
-      image: 'https://images.pexels.com/photos/1410235/pexels-photo-1410235.jpeg?auto=compress&cs=tinysrgb&w=600',
-    },
-    {
-      title: 'Spa Area',
-      category: 'Amenities',
-      image: 'https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=600',
-    },
-    {
-      title: 'Restaurant',
-      category: 'Dining',
-      image: 'https://images.pexels.com/photos/1624487/pexels-photo-1624487.jpeg?auto=compress&cs=tinysrgb&w=600',
-    },
-  ];
+  useEffect(() => {
+    const load = () => setGalleryImages(getGalleryImages());
+    load();
+    window.addEventListener('gallery-updated', load);
+    return () => window.removeEventListener('gallery-updated', load);
+  }, []);
 
   const categories = ['All', ...new Set(galleryImages.map((img) => img.category))];
   const [activeCategory, setActiveCategory] = useState('All');
@@ -162,9 +108,9 @@ export default function Gallery() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             {[
-              { count: '12+', label: 'Room Types' },
-              { count: '6+', label: 'Banquet Halls' },
-              { count: '8+', label: 'Fine Dining Areas' },
+              { count: '7', label: 'Room Types' },
+              { count: '3', label: 'Banquet Halls' },
+              { count: '1', label: 'Multi-Cuisine Restaurant' },
               { count: '500+', label: 'Total Photos' },
             ].map((stat, i) => (
               <div key={i} className="p-8 rounded-xl bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200">
@@ -176,44 +122,7 @@ export default function Gallery() {
         </div>
       </section>
 
-      {/* Virtual Tour Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold text-slate-900 mb-6">
-                Immersive Experience
-              </h2>
-              <p className="text-slate-600 text-lg mb-6 leading-relaxed">
-                Our gallery showcases the finest aspects of Hotel Vaishnavi Heights. From luxurious guest rooms to spectacular event spaces, elegant dining areas, and world-class amenities, each image tells a story of excellence.
-              </p>
-              <ul className="space-y-4 mb-8">
-                {[
-                  'High-resolution photography',
-                  '360-degree virtual tours',
-                  'Room-by-room exploration',
-                  'Event space showcases',
-                ].map((feature, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-amber-600 rounded-full"></div>
-                    <span className="text-slate-700 font-semibold">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <button className="bg-gradient-to-r from-amber-600 to-amber-700 text-white px-8 py-3 rounded-lg font-bold hover:shadow-lg transition-all">
-                Start Virtual Tour
-              </button>
-            </div>
-            <div className="rounded-xl overflow-hidden shadow-xl">
-              <img
-                src="https://images.pexels.com/photos/1579824/pexels-photo-1579824.jpeg?auto=compress&cs=tinysrgb&w=600"
-                alt="Virtual tour"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-amber-600 to-amber-700 text-white">

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { MapPin, Phone, Mail, Clock, Send, MapIcon } from 'lucide-react';
 
 export default function Contact() {
@@ -6,11 +7,19 @@ export default function Contact() {
     name: '',
     email: '',
     phone: '',
+    guests: '',
     subject: '',
     message: '',
+    reservationDetails: '',
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const serviceId = 'service_t145bv8';
+  const templateId = 'template_5b20eey';
+  const publicKey = 'vwzmsMYG5ZP4_-FuJ';
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -20,13 +29,53 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-      setSubmitted(false);
-    }, 3000);
+    setErrorMessage('');
+
+    if (!serviceId || !templateId || !publicKey) {
+      setErrorMessage('EmailJS is not configured yet. Please add your service, template, and public key settings.');
+      return;
+    }
+
+    setIsSending(true);
+
+    try {
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          name: formData.name,
+          from_email: formData.email,
+          email: formData.email,
+          phone: formData.phone || 'Not provided',
+          guests: formData.guests || 'Not specified',
+          subject: formData.subject,
+          reservation_details: formData.reservationDetails,
+          reservationDetails: formData.reservationDetails,
+          message: formData.message,
+          additional_message: formData.message,
+        },
+        publicKey
+      );
+
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        guests: '',
+        subject: '',
+        message: '',
+        reservationDetails: '',
+      });
+      setSubmitted(true);
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      setErrorMessage('Something went wrong while sending your message. Please try again.');
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -46,33 +95,35 @@ export default function Contact() {
       {/* Contact Information Cards */}
       <section className="py-16 bg-gradient-to-b from-slate-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow border-l-4 border-amber-600">
-              <Phone className="w-8 h-8 text-amber-600 mb-4" />
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Phone</h3>
-              <p className="text-slate-600 text-sm">+1 (555) 123-4567</p>
-              <p className="text-slate-600 text-sm">+1 (555) 987-6543</p>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="bg-white p-5 rounded-xl shadow-md hover:shadow-lg transition-shadow border-l-4 border-amber-600">
+              <Phone className="w-6 h-6 text-amber-600 mb-3" />
+              <h3 className="text-base font-bold text-slate-900 mb-1.5">Phone</h3>
+              <p className="text-slate-600 text-xs leading-relaxed">Reception: +91 85818 88881</p>
+              <p className="text-slate-600 text-xs leading-relaxed">Restaurant: +91 85818 88882</p>
+              <p className="text-slate-600 text-xs leading-relaxed">Banquet: +91 85818 88884</p>
+              <p className="text-slate-600 text-xs leading-relaxed">WhatsApp: +91 85818 88883</p>
             </div>
 
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow border-l-4 border-amber-600">
-              <Mail className="w-8 h-8 text-amber-600 mb-4" />
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Email</h3>
-              <p className="text-slate-600 text-sm">info@vaishnavi.com</p>
-              <p className="text-slate-600 text-sm">reservations@vaishnavi.com</p>
+            <div className="bg-white p-5 rounded-xl shadow-md hover:shadow-lg transition-shadow border-l-4 border-amber-600">
+              <Mail className="w-6 h-6 text-amber-600 mb-3" />
+              <h3 className="text-base font-bold text-slate-900 mb-1.5">Email</h3>
+              <p className="text-slate-600 text-xs leading-relaxed">info@hotelvaishnaviheights.com</p>
+              <p className="text-slate-600 text-xs leading-relaxed">reservations@hotelvaishnaviheight.com</p>
             </div>
 
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow border-l-4 border-amber-600">
-              <MapPin className="w-8 h-8 text-amber-600 mb-4" />
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Address</h3>
-              <p className="text-slate-600 text-sm">123 Heritage Lane</p>
-              <p className="text-slate-600 text-sm">City, State 12345</p>
+            <div className="bg-white p-5 rounded-xl shadow-md hover:shadow-lg transition-shadow border-l-4 border-amber-600">
+              <MapPin className="w-6 h-6 text-amber-600 mb-3" />
+              <h3 className="text-base font-bold text-slate-900 mb-1.5">Address</h3>
+              <p className="text-slate-600 text-xs leading-relaxed">123 Heritage Lane</p>
+              <p className="text-slate-600 text-xs leading-relaxed">City, State 12345</p>
             </div>
 
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow border-l-4 border-amber-600">
-              <Clock className="w-8 h-8 text-amber-600 mb-4" />
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Hours</h3>
-              <p className="text-slate-600 text-sm">24/7 Service</p>
-              <p className="text-slate-600 text-sm">Always Open</p>
+            <div className="bg-white p-5 rounded-xl shadow-md hover:shadow-lg transition-shadow border-l-4 border-amber-600">
+              <Clock className="w-6 h-6 text-amber-600 mb-3" />
+              <h3 className="text-base font-bold text-slate-900 mb-1.5">Hours</h3>
+              <p className="text-slate-600 text-xs leading-relaxed">24/7 Service</p>
+              <p className="text-slate-600 text-xs leading-relaxed">Always Open</p>
             </div>
           </div>
         </div>
@@ -102,7 +153,7 @@ export default function Contact() {
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="email" className="block text-sm font-semibold text-slate-900 mb-2">
                       Email
@@ -129,43 +180,74 @@ export default function Contact() {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition-all"
-                      placeholder="+1 (555) 123-4567"
+                      placeholder="+91 85818 88881"
                     />
                   </div>
                 </div>
 
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="guests" className="block text-sm font-semibold text-slate-900 mb-2">
+                      Number of People
+                    </label>
+                    <input
+                      type="number"
+                      id="guests"
+                      name="guests"
+                      min="1"
+                      value={formData.guests}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition-all"
+                      placeholder="e.g. 2"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="subject" className="block text-sm font-semibold text-slate-900 mb-2">
+                      Subject
+                    </label>
+                    <select
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition-all"
+                    >
+                      <option value="">Select a subject</option>
+                      <option value="reservation">Room Reservation</option>
+                      <option value="banquet">Banquet Inquiry</option>
+                      <option value="dining">Dining Reservation</option>
+                      <option value="general">General Inquiry</option>
+                      <option value="complaint">Feedback/Complaint</option>
+                    </select>
+                  </div>
+                </div>
+
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-semibold text-slate-900 mb-2">
-                    Subject
+                  <label htmlFor="reservationDetails" className="block text-sm font-semibold text-slate-900 mb-2">
+                    Reservation Details
                   </label>
-                  <select
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
+                  <textarea
+                    id="reservationDetails"
+                    name="reservationDetails"
+                    value={formData.reservationDetails}
                     onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition-all"
-                  >
-                    <option value="">Select a subject</option>
-                    <option value="reservation">Room Reservation</option>
-                    <option value="banquet">Banquet Inquiry</option>
-                    <option value="dining">Dining Reservation</option>
-                    <option value="general">General Inquiry</option>
-                    <option value="complaint">Feedback/Complaint</option>
-                  </select>
+                    rows={6}
+                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition-all resize-none"
+                    placeholder="Please share your room booking preferences, dates, or any special requests..."
+                  />
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-semibold text-slate-900 mb-2">
-                    Message
+                    Additional Message
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    required
-                    rows={6}
+                    rows={4}
                     className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition-all resize-none"
                     placeholder="Tell us how we can help..."
                   />
@@ -173,15 +255,22 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-amber-600 to-amber-700 text-white py-3 rounded-lg font-bold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
+                  disabled={isSending}
+                  className="w-full bg-gradient-to-r from-amber-600 to-amber-700 text-white py-3 rounded-lg font-bold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   <Send size={20} />
-                  Send Message
+                  {isSending ? 'Sending...' : 'Send Message'}
                 </button>
 
                 {submitted && (
                   <div className="p-4 bg-green-50 border border-green-300 rounded-lg text-green-700 font-semibold text-center">
                     Thank you! Your message has been sent successfully.
+                  </div>
+                )}
+
+                {errorMessage && (
+                  <div className="p-4 bg-red-50 border border-red-300 rounded-lg text-red-700 font-semibold text-center">
+                    {errorMessage}
                   </div>
                 )}
               </form>
@@ -202,7 +291,7 @@ export default function Contact() {
               <div className="space-y-6">
                 <div>
                   <h3 className="text-lg font-bold text-slate-900 mb-3">Reservations</h3>
-                  <p className="text-slate-600">Call us at +1 (555) 123-4567 or email reservations@vaishnavi.com</p>
+                  <p className="text-slate-600">Call us at +91 85818 88881 or email reservations@hotelvaishnaviheight.com</p>
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-slate-900 mb-3">Banquet Inquiries</h3>
@@ -259,15 +348,7 @@ export default function Contact() {
       <section className="py-16 bg-gradient-to-r from-amber-600 to-amber-700 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to Connect?</h2>
-          <p className="text-xl mb-8 text-amber-50">Our team is here to assist you 24/7</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-amber-700 px-8 py-3 rounded-lg font-bold text-lg hover:bg-amber-50 transition-colors">
-              Call Us Now
-            </button>
-            <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-white hover:text-amber-700 transition-all">
-              Live Chat
-            </button>
-          </div>
+          <p className="text-xl text-amber-50">Our team is here to assist you 24/7</p>
         </div>
       </section>
     </div>
