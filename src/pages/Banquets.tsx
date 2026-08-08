@@ -30,11 +30,6 @@ export default function Banquets() {
 
   const services = [
     {
-      icon: Utensils,
-      title: 'Gourmet Catering',
-      description: 'World-class cuisine with customizable menus for all preferences',
-    },
-    {
       icon: Music,
       title: 'Entertainment',
       description: 'Professional DJs, bands, and entertainment for your event',
@@ -127,7 +122,7 @@ export default function Banquets() {
           <h2 className="text-4xl font-bold text-slate-900 mb-16 text-center">
             Complete Event Solutions
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
@@ -172,43 +167,7 @@ export default function Banquets() {
         </div>
       </section>
 
-      {/* Catering Menu Preview */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <img
-                src="/rooms_image/IMG_6047.jpeg"
-                alt="Catering"
-                className="rounded-xl shadow-xl"
-              />
-            </div>
-            <div>
-              <h2 className="text-4xl font-bold text-slate-900 mb-6">Gourmet Catering</h2>
-              <p className="text-slate-600 text-lg mb-6 leading-relaxed">
-                Our award-winning culinary team crafts exquisite menus tailored to your preferences. From international cuisine to local delicacies, we ensure every bite is memorable.
-              </p>
-              <ul className="space-y-3 mb-8">
-                {[
-                  'Multi-cuisine options',
-                  'Dietary accommodations',
-                  'Premium beverage selection',
-                  'Live food stations',
-                  'Professional serving staff',
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-amber-600 rounded-full"></div>
-                    <span className="text-slate-700">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <button className="bg-gradient-to-r from-amber-600 to-amber-700 text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
-                View Menu
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Planning Timeline */}
       <section className="py-20 bg-gradient-to-b from-slate-50 to-white">
@@ -242,9 +201,9 @@ export default function Banquets() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-6">Plan Your Perfect Event</h2>
           <p className="text-xl mb-8 text-amber-50">Let our expert team make your celebration extraordinary</p>
-          <button className="bg-white text-amber-700 px-8 py-3 rounded-lg font-bold text-lg hover:bg-amber-50 transition-colors">
+          <a href="https://wa.me/918581888883?text=Hello,%20I%20would%20like%20to%20plan%20an%20event" target="_blank" rel="noopener noreferrer" className="inline-block bg-white text-amber-700 px-8 py-3 rounded-lg font-bold text-lg hover:bg-amber-50 transition-colors">
             Get in Touch
-          </button>
+          </a>
         </div>
       </section>
     </div>

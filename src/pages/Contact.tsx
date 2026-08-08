@@ -115,8 +115,8 @@ export default function Contact() {
             <div className="bg-white p-5 rounded-xl shadow-md hover:shadow-lg transition-shadow border-l-4 border-amber-600">
               <MapPin className="w-6 h-6 text-amber-600 mb-3" />
               <h3 className="text-base font-bold text-slate-900 mb-1.5">Address</h3>
-              <p className="text-slate-600 text-xs leading-relaxed">123 Heritage Lane</p>
-              <p className="text-slate-600 text-xs leading-relaxed">City, State 12345</p>
+              <p className="text-slate-600 text-xs leading-relaxed">Manjurahi, NH-19</p>
+              <p className="text-slate-600 text-xs leading-relaxed">Aurangabad, Bihar</p>
             </div>
 
             <div className="bg-white p-5 rounded-xl shadow-md hover:shadow-lg transition-shadow border-l-4 border-amber-600">
@@ -283,7 +283,7 @@ export default function Contact() {
                 <div className="text-center">
                   <MapIcon className="w-16 h-16 text-slate-500 mx-auto mb-4" />
                   <p className="text-slate-600 font-semibold">Hotel Location Map</p>
-                  <p className="text-slate-500 text-sm">123 Heritage Lane, City, State 12345</p>
+                  <p className="text-slate-500 text-sm">Manjurahi, NH-19, Aurangabad, Bihar</p>
                 </div>
               </div>
 

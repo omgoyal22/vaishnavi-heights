@@ -131,9 +131,9 @@ export default function Gallery() {
           <p className="text-xl mb-8 text-amber-50">
             Every photo captures the commitment to luxury and excellence
           </p>
-          <button className="bg-white text-amber-700 px-8 py-3 rounded-lg font-bold text-lg hover:bg-amber-50 transition-colors">
+          <a href="https://wa.me/918581888883?text=Hello,%20I%20would%20like%20to%20book%20a%20visit" target="_blank" rel="noopener noreferrer" className="inline-block bg-white text-amber-700 px-8 py-3 rounded-lg font-bold text-lg hover:bg-amber-50 transition-colors">
             Book Your Visit
-          </button>
+          </a>
         </div>
       </section>
     </div>

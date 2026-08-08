@@ -54,7 +54,7 @@ export default function Footer({ onNavigate }: FooterProps) {
             <div className="space-y-3">
               <div className="flex items-start gap-2">
                 <MapPin size={18} className="text-amber-400 mt-0.5 flex-shrink-0" />
-                <p className="text-slate-300 text-sm">123 Heritage Lane, City, State 12345</p>
+                <p className="text-slate-300 text-sm">Manjurahi, NH-19, Aurangabad, Bihar</p>
               </div>
               <div className="flex items-center gap-2">
                 <Phone size={18} className="text-amber-400" />

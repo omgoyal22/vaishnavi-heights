@@ -292,9 +292,9 @@ export default function Restaurants() {
                 <p>Host private dinners, family gatherings, or business meals in our elegant dining spaces.</p>
                 <p>Enjoy menu personalization, wine pairings, and tailored service for every occasion.</p>
               </div>
-              <button className="self-start rounded-full bg-amber-500 px-8 py-3 text-sm font-semibold text-slate-950 hover:bg-amber-400 transition">
+              <a href="https://wa.me/918581888883?text=Hello,%20I%20would%20like%20to%20request%20a%20private%20dining%20quote" target="_blank" rel="noopener noreferrer" className="inline-block self-start rounded-full bg-amber-500 px-8 py-3 text-sm font-semibold text-slate-950 hover:bg-amber-400 transition">
                 Request a private dining quote
-              </button>
+              </a>
             </div>
           </div>
         </div>
