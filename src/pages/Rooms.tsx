@@ -1,8 +1,10 @@
-import { Star, Users, Maximize2, Wifi, Sparkles, Heart, MapPin, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
+import { Star, Users, Maximize2, Wifi, Sparkles, Heart, MapPin, ArrowRight } from 'lucide-react';
+import RoomBookingModal from '../components/RoomBookingModal';
 
 export default function Rooms() {
-  const [hoveredRoom, setHoveredRoom] = useState<number | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedRoom, setSelectedRoom] = useState('Deluxe Room');
 
   const rooms = [
     {
@@ -255,8 +257,6 @@ export default function Rooms() {
               <div
                 key={index}
                 className="group relative h-full rounded-3xl overflow-hidden bg-slate-800 border border-slate-700 shadow-xl transition-all duration-500 hover:shadow-2xl hover:border-amber-500/50"
-                onMouseEnter={() => setHoveredRoom(index)}
-                onMouseLeave={() => setHoveredRoom(null)}
               >
                 {/* Image Container */}
                 <div className="relative h-72 overflow-hidden">
@@ -339,9 +339,15 @@ export default function Rooms() {
                   </div>
 
                   {/* CTA */}
-                  <a href={`https://wa.me/918581888883?text=Hello,%20I%20would%20like%20to%20book%20the%20${encodeURIComponent(room.name)}`} target="_blank" rel="noopener noreferrer" className="block text-center w-full bg-gradient-to-r from-amber-500 to-amber-600 text-white py-3 rounded-full font-bold hover:shadow-lg hover:shadow-amber-500/50 transition-all duration-300 group-hover:scale-105 transform">
+                  <button
+                    onClick={() => {
+                      setSelectedRoom(room.name);
+                      setIsModalOpen(true);
+                    }}
+                    className="block text-center w-full bg-gradient-to-r from-amber-500 to-amber-600 text-white py-3 rounded-full font-bold hover:shadow-lg hover:shadow-amber-500/50 transition-all duration-300 group-hover:scale-105 transform"
+                  >
                     Book Now
-                  </a>
+                  </button>
                 </div>
               </div>
             ))}
@@ -357,12 +363,25 @@ export default function Rooms() {
           <p className="text-xl text-slate-200 mb-10 max-w-2xl mx-auto">
             Choose from our exceptional collection of rooms and experience hospitality like never before.
           </p>
-          <a href="https://wa.me/918581888883?text=Hello,%20I%20would%20like%20to%20reserve%20a%20room" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-amber-500 to-amber-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:shadow-amber-500/50 transition-all duration-300 hover:scale-105">
+          <button
+            onClick={() => {
+              setSelectedRoom('Deluxe Room');
+              setIsModalOpen(true);
+            }}
+            className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-amber-500 to-amber-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:shadow-amber-500/50 transition-all duration-300 hover:scale-105"
+          >
             Reserve Your Room Now
             <ArrowRight className="w-5 h-5" />
-          </a>
+          </button>
         </div>
       </section>
+
+      {/* Room Booking Modal */}
+      <RoomBookingModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        initialRoomName={selectedRoom}
+      />
     </div>
   );
 }

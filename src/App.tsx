@@ -9,19 +9,32 @@ import Restaurants from './pages/Restaurants';
 import Contact from './pages/Contact';
 import Admin from './pages/Admin';
 import Footer from './components/Footer';
+import FloatingActions from './components/FloatingActions';
+import OfferBanner from './components/OfferBanner';
 
 type Page = 'home' | 'about' | 'rooms' | 'banquets' | 'gallery' | 'restaurants' | 'contact';
 
 export default function App() {
+  const checkIsAdmin = () => {
+    const path = window.location.pathname.toLowerCase().replace(/\/$/, '');
+    const hash = window.location.hash.toLowerCase();
+    const search = window.location.search.toLowerCase();
+    return path === '/admin' || hash === '#/admin' || search.includes('admin');
+  };
+
   const [currentPage, setCurrentPage] = useState<Page>('home');
-  const [isAdminRoute, setIsAdminRoute] = useState(window.location.pathname === '/admin');
+  const [isAdminRoute, setIsAdminRoute] = useState(checkIsAdmin());
 
   useEffect(() => {
     const handleLocationChange = () => {
-      setIsAdminRoute(window.location.pathname === '/admin');
+      setIsAdminRoute(checkIsAdmin());
     };
     window.addEventListener('popstate', handleLocationChange);
-    return () => window.removeEventListener('popstate', handleLocationChange);
+    window.addEventListener('hashchange', handleLocationChange);
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleLocationChange);
+    };
   }, []);
 
   if (isAdminRoute) {
@@ -43,17 +56,19 @@ export default function App() {
       case 'contact':
         return <Contact />;
       default:
-        return <Home />;
+        return <Home onNavigate={setCurrentPage} />;
     }
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 flex flex-col">
+      <OfferBanner />
       <Navigation currentPage={currentPage} onNavigate={setCurrentPage} />
       <main className="flex-1">
         {renderPage()}
       </main>
       <Footer onNavigate={setCurrentPage} />
+      <FloatingActions />
     </div>
   );
 }

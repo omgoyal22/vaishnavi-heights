@@ -91,6 +91,7 @@ export default function Footer({ onNavigate }: FooterProps) {
           <div className="flex gap-6 mt-4 md:mt-0 text-sm text-slate-400">
             <a href="#" className="hover:text-amber-400 transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-amber-400 transition-colors">Terms of Service</a>
+            <a href="/admin" className="hover:text-amber-400 transition-colors opacity-60 hover:opacity-100">Admin Portal</a>
           </div>
         </div>
       </div>

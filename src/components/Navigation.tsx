@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Phone, MessageCircle } from 'lucide-react';
 
 interface NavigationProps {
   currentPage: string;
@@ -38,7 +38,7 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-7">
             {links.map((link) => (
               <button
                 key={link.id}
@@ -54,20 +54,55 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
             ))}
           </div>
 
-          {/* Book Now Button */}
-          <div className="hidden md:block">
-            <a href="https://wa.me/918581888883?text=Hello,%20I%20would%20like%20to%20make%20a%20booking" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-amber-600 to-amber-700 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 inline-block">
-              Book Now
+          {/* Action Buttons: Call & WhatsApp */}
+          <div className="hidden md:flex items-center gap-3">
+            {/* Call Button */}
+            <a
+              href="tel:+918581888883"
+              className="flex items-center gap-2 border border-amber-600/30 bg-amber-50/60 hover:bg-amber-100/70 text-amber-800 px-4 py-2 rounded-lg font-semibold text-sm transition-all"
+            >
+              <Phone className="w-4 h-4 text-amber-700" />
+              <span>Call Us</span>
+            </a>
+
+            {/* WhatsApp Button */}
+            <a
+              href="https://wa.me/918581888883?text=Hello%20Hotel%20Vaishnavi%20Heights%2C%20I%20would%20like%20to%20inquire%20about%20a%20booking"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white px-4 py-2 rounded-lg font-semibold text-sm shadow hover:shadow-md transition-all hover:scale-105"
+            >
+              <MessageCircle className="w-4 h-4 fill-white stroke-[#25D366]" />
+              <span>WhatsApp</span>
             </a>
           </div>
 
           {/* Mobile Menu Toggle */}
-          <button
-            className="md:hidden text-slate-700"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex md:hidden items-center gap-2">
+            <a
+              href="tel:+918581888883"
+              className="p-2 rounded-lg bg-amber-100 text-amber-800"
+              aria-label="Call Hotel"
+            >
+              <Phone className="w-5 h-5" />
+            </a>
+            <a
+              href="https://wa.me/918581888883?text=Hello%20Hotel%20Vaishnavi%20Heights"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-lg bg-[#25D366] text-white"
+              aria-label="WhatsApp"
+            >
+              <MessageCircle className="w-5 h-5 fill-white stroke-[#25D366]" />
+            </a>
+            <button
+              className="p-2 rounded-lg text-slate-700 hover:bg-slate-100"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle navigation menu"
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -86,9 +121,24 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                 {link.label}
               </button>
             ))}
-            <a href="https://wa.me/918581888883?text=Hello,%20I%20would%20like%20to%20make%20a%20booking" target="_blank" rel="noopener noreferrer" className="block w-[calc(100%-2rem)] text-center m-4 mt-2 bg-gradient-to-r from-amber-600 to-amber-700 text-white px-6 py-2 rounded-lg font-semibold">
-              Book Now
-            </a>
+            <div className="grid grid-cols-2 gap-3 px-4 pt-3 border-t border-slate-100">
+              <a
+                href="tel:+918581888883"
+                className="flex items-center justify-center gap-2 bg-amber-600 text-white py-2.5 rounded-lg font-semibold text-sm"
+              >
+                <Phone className="w-4 h-4" />
+                <span>Call Us</span>
+              </a>
+              <a
+                href="https://wa.me/918581888883?text=Hello%20Hotel%20Vaishnavi%20Heights"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-[#25D366] text-white py-2.5 rounded-lg font-semibold text-sm"
+              >
+                <MessageCircle className="w-4 h-4 fill-white stroke-[#25D366]" />
+                <span>WhatsApp</span>
+              </a>
+            </div>
           </div>
         )}
       </div>

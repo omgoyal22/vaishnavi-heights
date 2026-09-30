@@ -1,6 +1,10 @@
-import { Users, Music, Utensils, Mic } from 'lucide-react';
+import { useState } from 'react';
+import { Users, Music, Mic } from 'lucide-react';
+import BanquetInquiryModal from '../components/BanquetInquiryModal';
 
 export default function Banquets() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedVenue, setSelectedVenue] = useState('Jashn Hall (300 Pax)');
   const venues = [
     {
       name: 'Jashn Hall',
@@ -106,9 +110,15 @@ export default function Banquets() {
                   </div>
 
                   {/* CTA */}
-                  <a href={`https://wa.me/918581888883?text=Hello,%20I%20would%20like%20to%20inquire%20about%20the%20${encodeURIComponent(venue.name)}`} target="_blank" rel="noopener noreferrer" className="block text-center w-full bg-gradient-to-r from-amber-600 to-amber-700 text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105">
+                  <button
+                    onClick={() => {
+                      setSelectedVenue(venue.name);
+                      setIsModalOpen(true);
+                    }}
+                    className="block text-center w-full bg-gradient-to-r from-amber-600 to-amber-700 text-white py-2.5 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
+                  >
                     Inquire Now
-                  </a>
+                  </button>
                 </div>
               </div>
             ))}
@@ -201,11 +211,24 @@ export default function Banquets() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-6">Plan Your Perfect Event</h2>
           <p className="text-xl mb-8 text-amber-50">Let our expert team make your celebration extraordinary</p>
-          <a href="https://wa.me/918581888883?text=Hello,%20I%20would%20like%20to%20plan%20an%20event" target="_blank" rel="noopener noreferrer" className="inline-block bg-white text-amber-700 px-8 py-3 rounded-lg font-bold text-lg hover:bg-amber-50 transition-colors">
-            Get in Touch
-          </a>
+          <button
+            onClick={() => {
+              setSelectedVenue('Jashn Hall (300 Pax)');
+              setIsModalOpen(true);
+            }}
+            className="inline-block bg-white text-amber-700 px-8 py-3.5 rounded-xl font-bold text-lg hover:bg-amber-50 shadow-xl transition-all hover:scale-105"
+          >
+            Inquire for Event Booking
+          </button>
         </div>
       </section>
+
+      {/* Banquet Inquiry Modal */}
+      <BanquetInquiryModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        initialVenue={selectedVenue}
+      />
     </div>
   );
 }
