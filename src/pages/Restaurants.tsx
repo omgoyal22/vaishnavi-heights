@@ -1,6 +1,7 @@
 import { Coffee, Leaf, Star, Utensils, X, CheckCircle2 } from 'lucide-react';
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
+import PageHeroSlideshow, { HeroSlide } from '../components/PageHeroSlideshow';
 const diningHighlights = [
   {
     icon: Utensils,
@@ -147,76 +148,74 @@ const DiningReservationModal = ({ isOpen, onClose }: { isOpen: boolean; onClose:
   );
 };
 
+const restaurantSlides: HeroSlide[] = [
+  {
+    id: 'rest-slide-1',
+    src: '/dinning/IMG_6097.jpeg',
+    alt: 'Multi-Cuisine Fine Dining Restaurant',
+    title: 'Multi-Cuisine Restaurant',
+    subtitle: 'Warm and ambient fine dining hall with handcrafted Indian, Chinese & Continental dishes.',
+  },
+  {
+    id: 'rest-slide-2',
+    src: '/dinning/IMG_6106.jpeg',
+    alt: 'Spacious Family Dining Hall',
+    title: 'Spacious Dining Hall',
+    subtitle: 'Inviting, elegant seating tailored for family feasts and milestone dinners.',
+  },
+  {
+    id: 'rest-slide-3',
+    src: '/dinning/IMG_6101.jpeg',
+    alt: 'Ambient Table Seating & Service',
+    title: 'Ambient Table Seating',
+    subtitle: 'Private and comfortable dining corners bathed in warm architectural lighting.',
+  },
+  {
+    id: 'rest-slide-4',
+    src: '/dinning/IMG_6102.jpeg',
+    alt: 'Cozy Dining Booth & Decor',
+    title: 'Signature Hospitality',
+    subtitle: 'Thoughtful tableside service and daily chef-curated culinary creations.',
+  },
+  {
+    id: 'rest-slide-5',
+    src: '/dinning/IMG_6104.jpeg',
+    alt: 'Restaurant Ambiance & Setting',
+    title: 'Culinary Delights',
+    subtitle: 'From signature gravies to sizzling tandoori grills made with farm-fresh produce.',
+  },
+];
+
 export default function Restaurants() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div className="bg-slate-50 text-slate-900">
       <DiningReservationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 text-white py-24">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(248,213,113,0.18),_transparent_35%),radial-gradient(circle_at_bottom_right,_rgba(244,114,182,0.16),transparent_35%)]"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-            <div className="space-y-8">
-              <p className="text-sm uppercase tracking-[0.35em] text-amber-300">Dining</p>
-              <h1 className="text-5xl md:text-6xl font-extrabold leading-tight">
-                Discover our dining
-                <span className="block text-amber-300">for every mood and moment.</span>
-              </h1>
-              <p className="max-w-xl text-slate-200 text-lg leading-relaxed">
-                Experience our Multi-Cuisine Restaurant serving authentic Indian, Chinese & Continental cuisine in a warm, welcoming setting. Whether you are enjoying a quiet dinner or celebrating with friends, our dining experience brings refined hospitality to every table.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button onClick={() => setIsModalOpen(true)} className="inline-flex items-center justify-center rounded-full bg-amber-500 px-8 py-3 text-sm font-semibold text-slate-950 hover:bg-amber-400 transition">
-                  Reserve a table
-                </button>
-                <button className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-8 py-3 text-sm font-semibold text-white hover:bg-white/20 transition">
-                  View menu
-                </button>
-              </div>
-            </div>
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="rounded-3xl overflow-hidden bg-white/10 shadow-2xl">
-                <img
-                  src="/dinning/IMG_6097.jpeg"
-                  alt="Dining area"
-                  className="h-72 w-full object-cover"
-                />
-              </div>
-              <div className="grid gap-4">
-                <div className="rounded-3xl overflow-hidden bg-white/10 shadow-2xl">
-                  <img
-                    src="/dinning/IMG_6101.jpeg"
-                    alt="Dining table setup"
-                    className="h-36 w-full object-cover"
-                  />
-                </div>
-                <div className="rounded-3xl overflow-hidden bg-white/10 shadow-2xl">
-                  <img
-                    src="/dinning/IMG_6102.jpeg"
-                    alt="Warm dining atmosphere"
-                    className="h-36 w-full object-cover"
-                  />
-                </div>
-              </div>
-              <div className="rounded-3xl overflow-hidden bg-white/10 shadow-2xl">
-                <img
-                  src="/dinning/IMG_6104.jpeg"
-                  alt="Dining presentation"
-                  className="h-36 w-full object-cover"
-                />
-              </div>
-              <div className="rounded-3xl overflow-hidden bg-white/10 shadow-2xl">
-                <img
-                  src="/dinning/IMG_6106.jpeg"
-                  alt="Dining ambiance"
-                  className="h-36 w-full object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Cinematic Hero Slideshow */}
+      <PageHeroSlideshow
+        slides={restaurantSlides}
+        badgeText="Fine Dining & Culinary Excellence · NH-19"
+        titleMain="Discover our dining"
+        titleHighlight="for every mood and moment."
+        description="Experience our Multi-Cuisine Restaurant serving authentic Indian, Chinese & Continental cuisine in a warm, welcoming setting. Whether you are enjoying a quiet dinner or celebrating with friends, our dining brings refined hospitality to every table."
+        actions={
+          <>
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-bold px-8 py-3.5 rounded-full hover:bg-amber-400 hover:shadow-lg hover:shadow-amber-500/50 transition-all duration-300 hover:scale-105"
+            >
+              Reserve a Table
+            </button>
+            <a
+              href="#menu-section"
+              className="border-2 border-white/20 text-white px-8 py-3.5 rounded-full font-semibold hover:bg-white/10 transition-all duration-300"
+            >
+              View Menu
+            </a>
+          </>
+        }
+      />
 
       <section className="py-12 bg-amber-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -250,7 +249,7 @@ export default function Restaurants() {
         </div>
       </section>
 
-      <section className="py-20 bg-slate-100">
+      <section id="menu-section" className="py-20 bg-slate-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>

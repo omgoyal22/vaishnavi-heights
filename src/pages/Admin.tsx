@@ -302,34 +302,34 @@ export default function Admin() {
 
                 {/* The Offer Banner Rendered inside preview */}
                 <div
-                  className={`px-4 py-2.5 flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm ${
+                  className={`relative px-4 py-2.5 flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm overflow-hidden ${
                     offerForm.theme === 'maroon'
-                      ? 'bg-gradient-to-r from-[#5B1E1E] via-[#7D3C3C] to-[#5B1E1E] text-white'
+                      ? 'bg-gradient-to-r from-[#7F1D1D] via-[#B91C1C] to-[#7F1D1D] text-white border-b-2 border-rose-300/50'
                       : offerForm.theme === 'dark'
-                      ? 'bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 text-slate-100 border-b border-amber-500/30'
+                      ? 'bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 text-slate-100 border-b-2 border-amber-400/50'
                       : offerForm.theme === 'emerald'
-                      ? 'bg-gradient-to-r from-emerald-900 via-teal-800 to-emerald-900 text-white'
-                      : 'bg-gradient-to-r from-amber-700 via-amber-600 to-amber-700 text-slate-950'
+                      ? 'bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-500 text-slate-950 border-b-2 border-emerald-200'
+                      : 'bg-[linear-gradient(90deg,#FFFDE7_0%,#FEF08A_15%,#FBBF24_50%,#FEF08A_85%,#FFFDE7_100%)] text-slate-950 border-b-2 border-amber-300 shadow-[0_6px_30px_rgba(251,191,36,0.65)]'
                   }`}
                 >
-                  <div className="flex items-center gap-2 min-w-0">
-                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-black/20 backdrop-blur-sm border border-white/15">
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <span className="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-slate-950 text-amber-300 ring-2 ring-amber-400/80 shadow">
                       {offerForm.badge || 'PROMO'}
                     </span>
-                    <span className="font-semibold truncate">
+                    <span className="font-extrabold truncate text-slate-950">
                       {offerForm.headline || 'Your Offer Headline appears here...'}
                     </span>
                   </div>
 
                   <div className="flex items-center gap-2 shrink-0">
                     {offerForm.couponCode && (
-                      <span className="px-2.5 py-0.5 rounded-lg text-xs font-mono font-bold bg-black/20 border border-white/15">
+                      <span className="px-2.5 py-1 rounded-lg text-xs font-mono font-black bg-white/95 text-slate-950 border border-slate-900/30 shadow-sm">
                         Code: {offerForm.couponCode}
                       </span>
                     )}
                     {offerForm.buttonText && (
-                      <span className="px-3 py-1 rounded-lg text-xs font-bold bg-slate-950 text-amber-400 flex items-center gap-1 shadow">
-                        <MessageCircle className="w-3.5 h-3.5" />
+                      <span className="px-3 py-1.5 rounded-lg text-xs font-black bg-slate-950 text-amber-300 flex items-center gap-1 shadow-md border border-amber-400/60">
+                        <MessageCircle className="w-3.5 h-3.5 fill-amber-300 text-slate-950" />
                         <span>{offerForm.buttonText}</span>
                       </span>
                     )}

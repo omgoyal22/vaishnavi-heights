@@ -1,4 +1,5 @@
 import { Award, Users, Globe, Heart } from 'lucide-react';
+import PageHeroSlideshow, { HeroSlide } from '../components/PageHeroSlideshow';
 
 export default function About() {
 
@@ -26,24 +27,65 @@ export default function About() {
     },
   ];
 
+  const aboutHeroSlides: HeroSlide[] = [
+    {
+      id: 'about-slide-1',
+      src: '/images/about-us-chandelier.jpg',
+      alt: 'Grand Chandelier & Architecture',
+      title: 'Heritage & Elegance',
+      subtitle: 'Two decades of hospitality excellence, timeless luxury, and guest-first commitment.',
+    },
+    {
+      id: 'about-slide-2',
+      src: '/images/lobby.png',
+      alt: 'Welcoming Hotel Lobby',
+      title: 'Signature Hospitality',
+      subtitle: 'Where every guest is treated with warmth, attention to detail, and personalized care.',
+    },
+    {
+      id: 'about-slide-3',
+      src: '/rooms_image/IMG_6045.jpeg',
+      alt: 'Luxury Suite & Lounge',
+      title: 'Modern Comfort',
+      subtitle: 'Crafted living spaces designed for relaxation, business travelers, and families alike.',
+    },
+    {
+      id: 'about-slide-4',
+      src: '/dinning/IMG_6097.jpeg',
+      alt: 'Fine Dining Restaurant',
+      title: 'Culinary Traditions',
+      subtitle: 'Celebrating regional delicacies and global flavors prepared by master chefs.',
+    },
+    {
+      id: 'about-slide-5',
+      src: '/images/rooftop-pool.png',
+      alt: 'Rooftop Pool',
+      title: 'Leisure & Wellness',
+      subtitle: 'Recharge and unwind in our skyline pool and serene lifestyle spaces.',
+    },
+  ];
+
   return (
     <div>
-      {/* Hero Section */}
-      <section className="bg-gradient-to-b from-slate-900 to-slate-800 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              About Hotel Vaishnavi Heights
-            </h1>
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-              A legacy of luxury, hospitality, and exceptional service spanning over two decades
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Full-Page Cinematic Hero Slideshow */}
+      <PageHeroSlideshow
+        slides={aboutHeroSlides}
+        badgeText="Our Story & Philosophy · Hotel Vaishnavi Heights"
+        titleMain="A legacy of luxury and"
+        titleHighlight="heartfelt hospitality."
+        description="A premier destination in Aurangabad, Bihar, delivering comfortable accommodation, a multi-cuisine restaurant, banquet halls, and unforgettable experiences."
+        actions={
+          <a
+            href="#story-section"
+            className="bg-gradient-to-r from-amber-600 to-amber-700 text-white px-8 py-3.5 rounded-full font-bold hover:shadow-xl hover:shadow-amber-600/40 transition-all duration-300 hover:scale-105"
+          >
+            Discover Our Story
+          </a>
+        }
+      />
 
       {/* About Us */}
-      <section className="py-20 bg-white">
+      <section id="story-section" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>

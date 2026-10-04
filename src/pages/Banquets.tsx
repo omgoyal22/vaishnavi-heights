@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Users, Music, Mic } from 'lucide-react';
 import BanquetInquiryModal from '../components/BanquetInquiryModal';
+import PageHeroSlideshow, { HeroSlide } from '../components/PageHeroSlideshow';
 
 export default function Banquets() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -50,22 +51,76 @@ export default function Banquets() {
     },
   ];
 
+  const banquetSlides: HeroSlide[] = [
+    {
+      id: 'banquet-slide-1',
+      src: '/rooms_image/IMG_6048.jpeg',
+      alt: 'Jashn Grand Banquet Hall',
+      title: 'Jashn Grand Hall (300+ Pax)',
+      subtitle: 'Lavish chandelier decor, expansive banquet layout, and premium event acoustics.',
+    },
+    {
+      id: 'banquet-slide-2',
+      src: '/rooms_image/IMG_6050.jpeg',
+      alt: 'Royal Darbar Hall',
+      title: 'Royal Darbar Hall (150-200 Pax)',
+      subtitle: 'Regal banquet setting tailored for receptions, milestone galas, and family functions.',
+    },
+    {
+      id: 'banquet-slide-3',
+      src: '/rooms_image/IMG_6052.jpeg',
+      alt: 'Business Conference & Corporate Hall',
+      title: 'Corporate Conference Hall',
+      subtitle: 'Modern business setup equipped with projector, high-speed Wi-Fi, and sound setup.',
+    },
+    {
+      id: 'banquet-slide-4',
+      src: '/rooms_image/IMG_6053.jpeg',
+      alt: 'Grand Celebrations & Receptions',
+      title: 'Grand Stage & Reception Layouts',
+      subtitle: 'Complete logistical planning, flexible seating arrangements, and live stage decor.',
+    },
+    {
+      id: 'banquet-slide-5',
+      src: '/images/banquet.png',
+      alt: 'Celebration Banquet Venue',
+      title: 'Bespoke Celebration Spaces',
+      subtitle: 'Gourmet catering and dedicated event coordinators to ensure flawless execution.',
+    },
+  ];
+
   return (
     <div>
-      {/* Hero Section */}
-      <section className="bg-gradient-to-b from-slate-900 to-slate-800 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Banquet & Event Spaces</h1>
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-              Stunning venues designed for your unforgettable events and celebrations
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Full-Page Cinematic Hero Slideshow */}
+      <PageHeroSlideshow
+        slides={banquetSlides}
+        badgeText="Grand Venues & Celebrations · NH-19, Aurangabad"
+        titleMain="Banquet & Event Spaces"
+        titleHighlight="crafted for celebrations."
+        description="Stunning venues, bespoke catering, and seamless hospitality designed to make your weddings, gala receptions, and corporate conferences unforgettable."
+        actions={
+          <>
+            <button
+              onClick={() => {
+                setSelectedVenue('Jashn Hall (300 Pax)');
+                setIsModalOpen(true);
+              }}
+              className="bg-gradient-to-r from-amber-600 to-amber-700 text-white px-8 py-3.5 rounded-full font-bold hover:shadow-xl hover:shadow-amber-600/40 transition-all duration-300 hover:scale-105"
+            >
+              Inquire for Event Booking
+            </button>
+            <a
+              href="#venues-grid"
+              className="border-2 border-white/20 text-white px-8 py-3.5 rounded-full font-semibold hover:bg-white/10 transition-all duration-300"
+            >
+              Explore Venues
+            </a>
+          </>
+        }
+      />
 
       {/* Venues Grid */}
-      <section className="py-20 bg-gradient-to-b from-slate-50 to-white">
+      <section id="venues-grid" className="py-20 bg-gradient-to-b from-slate-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {venues.map((venue, index) => (

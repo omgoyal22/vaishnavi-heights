@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { MapPin, Phone, Mail, Clock, Send, MapIcon } from 'lucide-react';
+import PageHeroSlideshow, { HeroSlide } from '../components/PageHeroSlideshow';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -78,22 +79,58 @@ export default function Contact() {
     }
   };
 
+  const contactHeroSlides: HeroSlide[] = [
+    {
+      id: 'contact-slide-1',
+      src: '/images/exterior-night.png',
+      alt: 'Hotel Vaishnavi Heights Entrance & Facade',
+      title: 'Visit Our Landmark Location',
+      subtitle: 'Conveniently located on NH-19, Manjurahi, Aurangabad, Bihar.',
+    },
+    {
+      id: 'contact-slide-2',
+      src: '/images/lobby.png',
+      alt: '24/7 Front Desk & Reception',
+      title: '24/7 Concierge & Front Desk',
+      subtitle: 'Our dedicated team is ready round-the-clock to assist your bookings and inquiries.',
+    },
+    {
+      id: 'contact-slide-3',
+      src: '/rooms_image/IMG_6045.jpeg',
+      alt: 'Room Reservations',
+      title: 'Room Reservations & Support',
+      subtitle: 'Direct assistance for individual, corporate, and family room bookings.',
+    },
+    {
+      id: 'contact-slide-4',
+      src: '/dinning/IMG_6097.jpeg',
+      alt: 'Dining Inquiries',
+      title: 'Dining & Table Bookings',
+      subtitle: 'Connect with our restaurant team for table reservations and party catering.',
+    },
+  ];
+
   return (
     <div>
-      {/* Hero Section */}
-      <section className="bg-gradient-to-b from-slate-900 to-slate-800 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Get in Touch</h1>
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-              We'd love to hear from you. Contact us for reservations, events, or inquiries
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Full-Page Cinematic Hero Slideshow */}
+      <PageHeroSlideshow
+        slides={contactHeroSlides}
+        badgeText="Reach Out · We're Here 24×7"
+        titleMain="Connect with us for"
+        titleHighlight="memorable experiences."
+        description="We'd love to hear from you. Contact our team for room reservations, dining tables, event bookings, or any special requests."
+        actions={
+          <a
+            href="#contact-cards"
+            className="bg-gradient-to-r from-amber-600 to-amber-700 text-white px-8 py-3.5 rounded-full font-bold hover:shadow-xl hover:shadow-amber-600/40 transition-all duration-300 hover:scale-105"
+          >
+            View Contact Details
+          </a>
+        }
+      />
 
       {/* Contact Information Cards */}
-      <section className="py-16 bg-gradient-to-b from-slate-50 to-white">
+      <section id="contact-cards" className="py-16 bg-gradient-to-b from-slate-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="bg-white p-5 rounded-xl shadow-md hover:shadow-lg transition-shadow border-l-4 border-amber-600">

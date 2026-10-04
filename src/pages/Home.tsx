@@ -123,19 +123,12 @@ export default function Home(_props: HomeProps = {}) {
   };
 
   useEffect(() => {
-    if (!isPlaying) {
-      if (slideIntervalRef.current) clearInterval(slideIntervalRef.current);
-      return;
-    }
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 3500);
 
-    slideIntervalRef.current = setInterval(() => {
-      nextSlide();
-    }, 5000);
-
-    return () => {
-      if (slideIntervalRef.current) clearInterval(slideIntervalRef.current);
-    };
-  }, [isPlaying, nextSlide]);
+    return () => clearInterval(timer);
+  }, [slides.length]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchEnd(null);
@@ -241,8 +234,6 @@ export default function Home(_props: HomeProps = {}) {
       {/* Full-Page Cinematic Hero Slideshow */}
       <section
         className="relative w-full min-h-[88vh] lg:min-h-[94vh] flex flex-col justify-between overflow-hidden select-none bg-slate-950"
-        onMouseEnter={() => setIsPlaying(false)}
-        onMouseLeave={() => setIsPlaying(true)}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -305,33 +296,28 @@ export default function Home(_props: HomeProps = {}) {
 
         {/* Bottom Interactive Bar (Thumbnails & Micro-info across full width) */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-6 sm:pb-8">
-          {/* Thumbnail preview strip */}
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 sm:gap-3 mb-5">
-            {slides.map((slide, index) => {
-              const isActive = currentSlide === index;
-              return (
-                <button
-                  key={slide.id}
-                  onClick={() => goToSlide(index)}
-                  className={`group/thumb relative rounded-xl overflow-hidden aspect-[16/10] border transition-all duration-300 text-left ${
-                    isActive
-                      ? 'ring-2 ring-brand-gold border-transparent shadow-[0_0_20px_rgba(197,160,77,0.6)] scale-[1.03] opacity-100'
-                      : 'border-white/15 opacity-55 hover:opacity-95 hover:scale-[1.02] hover:border-white/35 bg-black/40'
-                  }`}
-                >
-                  <img
-                    src={slide.src}
-                    alt={slide.alt}
-                    className="w-full h-full object-cover"
+          {/* Sleek Minimal Slide Indicators (No Photo Boxes) */}
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-2">
+              {slides.map((slide, index) => {
+                const isActive = currentSlide === index;
+                return (
+                  <button
+                    key={`indicator-${slide.id}`}
+                    onClick={() => goToSlide(index)}
+                    className={`h-1.5 transition-all duration-500 rounded-full cursor-pointer ${
+                      isActive
+                        ? 'w-10 bg-gradient-to-r from-amber-400 to-amber-600 shadow-[0_0_12px_rgba(245,158,11,0.7)]'
+                        : 'w-3 bg-white/30 hover:bg-white/60'
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex items-end p-1.5">
-                    <span className="text-[10px] sm:text-xs font-semibold text-white truncate drop-shadow">
-                      {slide.tag}
-                    </span>
-                  </div>
-                </button>
-              );
-            })}
+                );
+              })}
+            </div>
+            <div className="text-xs font-medium text-slate-400 select-none">
+              <span className="text-white font-bold">{currentSlide + 1}</span> / {slides.length}
+            </div>
           </div>
 
           {/* Micro Info Cards Grid */}

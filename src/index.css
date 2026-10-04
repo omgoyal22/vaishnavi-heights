@@ -66,6 +66,19 @@
   .animate-progress {
     animation: progress 5s linear forwards;
   }
+
+  @keyframes bannerShine {
+    0% {
+      transform: translateX(-150%) skewX(-25deg);
+    }
+    40%, 100% {
+      transform: translateX(300%) skewX(-25deg);
+    }
+  }
+
+  .animate-banner-shine {
+    animation: bannerShine 4.2s ease-in-out infinite;
+  }
 }
 
 /* Hide Bolt platform badge if injected */

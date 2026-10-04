@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import { getGalleryImages, GalleryItem } from '../utils/galleryStore';
+import PageHeroSlideshow, { HeroSlide } from '../components/PageHeroSlideshow';
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -21,22 +22,72 @@ export default function Gallery() {
       ? galleryImages
       : galleryImages.filter((img) => img.category === activeCategory);
 
+  const galleryHeroSlides: HeroSlide[] = [
+    {
+      id: 'gal-slide-1',
+      src: '/images/exterior-night.png',
+      alt: 'Hotel Vaishnavi Heights Night Facade',
+      title: 'Architectural Splendor',
+      subtitle: 'Illuminated night facade welcoming travelers along NH-19 Aurangabad.',
+    },
+    {
+      id: 'gal-slide-2',
+      src: '/rooms_image/IMG_6045.jpeg',
+      alt: 'Luxury Suite & Lounge',
+      title: 'Signature Suites',
+      subtitle: 'Expansive interiors, bespoke craftsmanship, and tranquil luxury.',
+    },
+    {
+      id: 'gal-slide-3',
+      src: '/dinning/IMG_6097.jpeg',
+      alt: 'Multi-Cuisine Fine Dining Hall',
+      title: 'Fine Dining Experiences',
+      subtitle: 'Inviting tables and culinary delicacies prepared by master chefs.',
+    },
+    {
+      id: 'gal-slide-4',
+      src: '/rooms_image/IMG_6048.jpeg',
+      alt: 'Jashn Grand Banquet Hall',
+      title: 'Grand Banquet Halls',
+      subtitle: 'Chandelier-lit celebration venues for weddings and high-profile gatherings.',
+    },
+    {
+      id: 'gal-slide-5',
+      src: '/images/rooftop-pool.png',
+      alt: 'Rooftop Swimming Pool',
+      title: 'Rooftop Leisure Pool',
+      subtitle: 'Serene skyline waters for relaxing afternoons and sunset views.',
+    },
+    {
+      id: 'gal-slide-6',
+      src: '/images/lobby.png',
+      alt: 'Grand Hotel Reception & Lobby',
+      title: 'Grand Hotel Reception',
+      subtitle: 'Warm welcome and seamless check-in in a contemporary luxury lobby.',
+    },
+  ];
+
   return (
     <div>
-      {/* Hero Section */}
-      <section className="bg-gradient-to-b from-slate-900 to-slate-800 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Gallery</h1>
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-              Explore the beauty and elegance of Hotel Vaishnavi Heights
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Full-Page Cinematic Hero Slideshow */}
+      <PageHeroSlideshow
+        slides={galleryHeroSlides}
+        badgeText="Visual Tour · Hotel Vaishnavi Heights"
+        titleMain="A visual journey through"
+        titleHighlight="elegance & comfort."
+        description="Explore the architecture, luxury suites, fine dining, rooftop pool, and grand banquet venues of Hotel Vaishnavi Heights."
+        actions={
+          <a
+            href="#gallery-grid"
+            className="bg-gradient-to-r from-amber-600 to-amber-700 text-white px-8 py-3.5 rounded-full font-bold hover:shadow-xl hover:shadow-amber-600/40 transition-all duration-300 hover:scale-105"
+          >
+            Explore Photo Gallery
+          </a>
+        }
+      />
 
       {/* Filter Buttons */}
-      <section className="py-12 bg-gradient-to-b from-slate-50 to-white sticky top-20 z-40 shadow-md">
+      <section id="gallery-grid" className="py-12 bg-gradient-to-b from-slate-50 to-white sticky top-20 z-40 shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center gap-4">
             {categories.map((category) => (

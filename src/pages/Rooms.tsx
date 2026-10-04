@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Star, Users, Maximize2, Wifi, Sparkles, Heart, MapPin, ArrowRight } from 'lucide-react';
+import { Star, Users, Maximize2, Wifi, Heart, MapPin, ArrowRight, Sparkles } from 'lucide-react';
 import RoomBookingModal from '../components/RoomBookingModal';
+import PageHeroSlideshow, { HeroSlide } from '../components/PageHeroSlideshow';
 
 export default function Rooms() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -93,57 +94,80 @@ export default function Rooms() {
     { icon: '🍽️', title: 'Priority dining reservations', subtitle: 'At our restaurants' },
   ];
 
+  const roomSlides: HeroSlide[] = [
+    {
+      id: 'room-slide-1',
+      src: '/rooms_image/IMG_6065.jpeg',
+      alt: 'Presidential Suite Master Bedroom',
+      title: 'Presidential Suite',
+      subtitle: 'King bed with grand upholstered wall, premium ambient lighting & luxury lounge.',
+    },
+    {
+      id: 'room-slide-2',
+      src: '/rooms_image/IMG_6064.jpeg',
+      alt: 'Luxury Suite Living Space',
+      title: 'Luxury Suite',
+      subtitle: 'Spacious dual-zone suite with dedicated living room and plush seating.',
+    },
+    {
+      id: 'room-slide-3',
+      src: '/rooms_image/IMG_6045.jpeg',
+      alt: 'Executive Suite Lounge',
+      title: 'Executive Room',
+      subtitle: 'Elegant interiors, work desk, smart TV, and ergonomic sofa setup.',
+    },
+    {
+      id: 'room-slide-4',
+      src: '/rooms_image/IMG_6061.jpeg',
+      alt: 'Club Room',
+      title: 'Club Room',
+      subtitle: 'Queen bed comfort with contemporary styling and high-speed Wi-Fi.',
+    },
+    {
+      id: 'room-slide-5',
+      src: '/rooms_image/IMG_6060.jpeg',
+      alt: 'Deluxe Room',
+      title: 'Deluxe Room',
+      subtitle: 'Modern boutique design with double bed, study table, and 24/7 service.',
+    },
+    {
+      id: 'room-slide-6',
+      src: '/rooms_image/IMG_6046.jpeg',
+      alt: 'Boutique Room Interiors',
+      title: 'Superior Room',
+      subtitle: 'Warm and inviting ambiance engineered for absolute relaxation.',
+    },
+  ];
+
   return (
     <div className="bg-slate-900">
-      {/* Premium Hero Section */}
-      <section className="relative overflow-hidden pt-0">
-        <div className="absolute inset-0">
-          <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-amber-500/20 blur-3xl"></div>
-          <div className="absolute top-40 -right-20 h-80 w-80 rounded-full bg-amber-600/15 blur-3xl"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(1000px_circle_at_30%_0%,rgba(248,113,113,0.25),transparent_55%),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0.8))]"></div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-            <div className="space-y-6 text-white">
-              <div className="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-2 border border-white/20 w-fit">
-                <Sparkles className="w-4 h-4 text-amber-400" />
-                <span className="text-sm font-semibold">Luxury Accommodations</span>
-              </div>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
-                Rooms that inspire
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-500">
-                  unforgettable moments
-                </span>
-              </h1>
-              <p className="text-lg text-slate-200 max-w-xl leading-relaxed">
-                Experience world-class comfort in our thoughtfully designed rooms and suites, each offering a unique blend of elegance and modern convenience.
-              </p>
-              <div className="pt-4">
-                <p className="text-base text-slate-200 max-w-xl leading-relaxed">
-                  Discover the perfect stay tailored to your comfort, style, and travel needs.
-                </p>
-              </div>
-            </div>
-
-            {/* Large Featured Image */}
-            <div className="relative h-96 md:h-full rounded-3xl overflow-hidden shadow-2xl group">
-              <img
-                src="/rooms_image/IMG_6065.jpeg"
-                alt="Luxury room"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-              <div className="absolute bottom-6 left-6 right-6">
-                <div className="flex items-center gap-2 text-white">
-                  <MapPin className="w-5 h-5 text-amber-400" />
-                  <span className="font-semibold">Premium Suite Room</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Full-Page Cinematic Hero Slideshow */}
+      <PageHeroSlideshow
+        slides={roomSlides}
+        badgeText="Luxury Accommodations · NH-19, Aurangabad"
+        titleMain="Rooms that inspire"
+        titleHighlight="unforgettable moments."
+        description="Experience world-class comfort in our thoughtfully designed rooms and suites, each offering a unique blend of elegance and modern convenience."
+        actions={
+          <>
+            <button
+              onClick={() => {
+                setSelectedRoom('Deluxe Room');
+                setIsModalOpen(true);
+              }}
+              className="bg-gradient-to-r from-amber-500 to-amber-600 text-white px-7 py-3 rounded-full font-bold hover:shadow-lg hover:shadow-amber-500/50 transition-all duration-300 hover:scale-105"
+            >
+              Book Your Stay
+            </button>
+            <a
+              href="#rooms-grid"
+              className="border-2 border-white/20 text-white px-7 py-3 rounded-full font-semibold hover:bg-white/10 transition-all duration-300"
+            >
+              Explore All Rooms
+            </a>
+          </>
+        }
+      />
 
       {/* Exclusive Offers Section */}
       <section className="relative py-10 overflow-hidden">
@@ -243,7 +267,7 @@ export default function Rooms() {
       </section>
 
       {/* Room Collection - Premium Grid */}
-      <section className="py-24">
+      <section id="rooms-grid" className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-bold text-white mb-4">Our Room Collection</h2>
